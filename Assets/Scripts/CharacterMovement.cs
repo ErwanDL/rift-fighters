@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class CharacterMovement : MonoBehaviour {
+
+    private void Start () {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update () {
+
     }
 }
