@@ -9,21 +9,23 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField, Tooltip("Acceleration while grounded.")]
     private float walkAcceleration = 75.0f;
 
-    [SerializeField, Tooltip("Acceleration while in the air.")]
-    private float airAcceleration = 30.0f;
-
+    [SerializeField, Tooltip("Acceleration while in the air")]
+    private float airAcceleration;
     [SerializeField, Tooltip("Deceleration applied when character is grounded and not attempting to move.")]
     private float groundDeceleration = 70.0f;
 
     [SerializeField, Tooltip("Max height the character will jump regardless of gravity")]
     private float jumpHeight = 15.0f;
 
+    private int numJumps;
+    [SerializeField, Tooltip("The number of jumps the character can perform in a row")]
+    private int maxJumps;
+
     [SerializeField, Tooltip("Apply more gravity")]
     private float addedGravity = 20f;
-
-    private BoxCollider2D boxCollider;
-
     private Vector2 velocity;
+    [SerializeField]
+    private Rigidbody2D rb;
 
     /// <summary>
     /// Set to true when the character intersects a collider beneath
@@ -31,9 +33,11 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private bool grounded;
 
-    private void Awake()
+    private void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
+        grounded = true;
+        numJumps = 0;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -41,23 +45,13 @@ public class CharacterMovement : MonoBehaviour
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
         float moveInput = Input.GetAxisRaw("Horizontal");
 
-        if (grounded)
-        {
-            velocity.y = 0;
-
-            if (Input.GetKeyDown("space"))
-            {
-                // Calculate the velocity required to achieve the target jump height.
-                velocity.y = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
-            }
-        }
-
         float acceleration = grounded ? walkAcceleration : airAcceleration;
         float deceleration = grounded ? groundDeceleration : 0;
 
         if (moveInput != 0)
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, speed * Mathf.Abs(moveInput), acceleration * Time.deltaTime);
+            rb.velocity = new Vector2(Mathf.MoveTowards(velocity.x, speed * moveInput, acceleration * Time.deltaTime), rb.velocity.y);
+            Debug.Log(rb.velocity);
             Vector3 currentRot = transform.rotation.eulerAngles;
             float rotY = moveInput > 0 ? 0 : 180;
             Vector3 newRot = new Vector3(0, rotY, 0);
@@ -65,38 +59,26 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.deltaTime);
+            rb.velocity = new Vector2(Mathf.MoveTowards(velocity.x, 0, deceleration * Time.deltaTime), rb.velocity.y);
         }
 
-        velocity.y += Physics2D.gravity.y * Time.deltaTime * addedGravity;
-
-        transform.Translate(velocity * Time.deltaTime);
-
-        grounded = false;
-
-        // Retrieve all colliders we have intersected after velocity has been applied.
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
-
-        foreach (Collider2D hit in hits)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump())
         {
-            // Ignore our own collider.
-            if (hit == boxCollider)
-                continue;
-            ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-            // Ensure that we are still overlapping this collider.
-            // The overlap may no longer exist due to another intersected collider
-            // pushing us out of this one.
-            if (colliderDistance.isOverlapped && !hit.gameObject.CompareTag("YouShallNotPass"))
-            {
-                transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
-                // If we intersect an object beneath us, set grounded to true. 
-                if (Vector2.Angle(colliderDistance.normal, Vector2.up) < 90 && velocity.y < 0)
-                {
-                    grounded = true;
-                }
-            }
-
+            rb.velocity = new Vector2(0, jumpHeight);
+            ++numJumps;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Ground"))
+        {
+            numJumps = 0;
+        }
+    }
+
+    private bool canJump()
+    {
+        return numJumps < maxJumps;
     }
 }
 

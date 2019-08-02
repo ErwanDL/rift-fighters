@@ -469,7 +469,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15970
+  m_Name: pb_Mesh14548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 806533277}
   m_Layer: 0
   m_Name: LeftPlatform
-  m_TagString: Jumpable
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 680688411}
   m_Layer: 0
   m_Name: MainPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2198,7 +2198,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15960
+  m_Name: pb_Mesh14538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2459,7 +2459,7 @@ GameObject:
   - component: {fileID: 1900387816}
   m_Layer: 0
   m_Name: RightPlatform
-  m_TagString: Jumpable
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2866,7 +2866,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16020
+  m_Name: pb_Mesh14598
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3102,13 +3102,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
-      propertyPath: speed
+      propertyPath: jumpHeight
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 2057411587110905834, guid: 8c6a55b711eed704890129a6e8630717,
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f3343dcee80ca1742a88c648358b97ff, type: 2}
+      propertyPath: maxJumps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: speed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909074879, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+      propertyPath: m_GravityScale
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
