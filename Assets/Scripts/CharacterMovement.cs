@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 
-<<<<<<< HEAD
-public class CharacterMovement : MonoBehaviour
-{
-=======
 [RequireComponent(typeof(BoxCollider2D))]
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField, Tooltip("Max speed that the character moves (unit/s)")]
+    [SerializeField, Tooltip("Max speed that the character reach when running.")]
     private float speed = 30.0f;
->>>>>>> Improved Controls
 
     [SerializeField, Tooltip("Acceleration while grounded.")]
     private float walkAcceleration = 75.0f;
@@ -29,6 +24,9 @@ public class CharacterMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
 
     private Vector2 velocity;
+
+    [SerializeField]
+    private Animation runningAnim = null;
 
     /// <summary>
     /// Set to true when the character intersects a collider beneath
@@ -88,7 +86,6 @@ public class CharacterMovement : MonoBehaviour
             if (hit == boxCollider)
                 continue;
             ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-            Debug.Log(colliderDistance);
             // Ensure that we are still overlapping this collider.
             // The overlap may no longer exist due to another intersected collider
             // pushing us out of this one.
