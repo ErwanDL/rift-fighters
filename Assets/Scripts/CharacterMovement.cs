@@ -25,9 +25,6 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector2 velocity;
 
-    [SerializeField]
-    private Animation runningAnim = null;
-
     /// <summary>
     /// Set to true when the character intersects a collider beneath
     /// them in the previous frame.
