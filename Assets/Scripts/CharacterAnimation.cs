@@ -23,10 +23,6 @@ public class CharacterAnimation : MonoBehaviour
         }
         else
         {
-            if (!anim.GetBool("isIdle"))
-            {
-                anim.CrossFade("Idle", 0.1f);
-            }
             anim.SetBool("isIdle", true);
             anim.SetBool("isRunning", false);
         }
