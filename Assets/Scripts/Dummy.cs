@@ -2,22 +2,31 @@
 
 public class Dummy : MonoBehaviour, IEnnemy
 {
-    public float currentHealth = 100f;
+    public int currentHealth = 100;
     [SerializeField, Tooltip("Dummy's Max Health")]
-    private float maxHealth = 100f;
+    private int maxHealth = 100;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            TakeDamage(10);
+        }
+    }
     public void PerformAttack()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
