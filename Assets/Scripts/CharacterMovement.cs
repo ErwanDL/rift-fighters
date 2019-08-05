@@ -4,18 +4,18 @@
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField, Tooltip("Max speed that the character reach when running.")]
-    private float speed = 30.0f;
+    private float speed = 15.0f;
 
     [SerializeField, Tooltip("Acceleration while grounded.")]
-    private float walkAcceleration = 75.0f;
+    private float walkAcceleration = 20.0f;
 
     [SerializeField, Tooltip("Acceleration while in the air")]
-    private float airAcceleration;
+    private float airAcceleration = 30.0f;
     [SerializeField, Tooltip("Deceleration applied when character is grounded and not attempting to move.")]
-    private float groundDeceleration = 70.0f;
+    private float groundDeceleration = 50.0f;
 
     [SerializeField, Tooltip("Max height the character will jump regardless of gravity")]
-    private float jumpHeight = 15.0f;
+    private float jumpHeight = 50.0f;
 
     private int numJumps;
     [SerializeField, Tooltip("The number of jumps the character can perform in a row")]
@@ -35,6 +35,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void Start()
     {
+        speed *= 100;
+        walkAcceleration *= 100;
+        airAcceleration *= 100;
+
         grounded = true;
         numJumps = 0;
         rb = GetComponent<Rigidbody2D>();
@@ -51,7 +55,6 @@ public class CharacterMovement : MonoBehaviour
         if (moveInput != 0)
         {
             rb.velocity = new Vector2(Mathf.MoveTowards(velocity.x, speed * moveInput, acceleration * Time.deltaTime), rb.velocity.y);
-            Debug.Log(rb.velocity);
             Vector3 currentRot = transform.rotation.eulerAngles;
             float rotY = moveInput > 0 ? 0 : 180;
             Vector3 newRot = new Vector3(0, rotY, 0);
