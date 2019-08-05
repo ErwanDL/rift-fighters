@@ -118,15 +118,15 @@ ModelImporter:
       name: Jump
       takeName: Armature|Running
       internalID: 8521470458871766595
-      firstFrame: 160
-      lastFrame: 161
+      firstFrame: 150
+      lastFrame: 170
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -147,8 +147,8 @@ ModelImporter:
       name: Fall
       takeName: Armature|Running
       internalID: 2104999889037103153
-      firstFrame: 170
-      lastFrame: 171
+      firstFrame: 180
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -176,8 +176,8 @@ ModelImporter:
       name: Crouch
       takeName: Armature|Running
       internalID: -7813635296899823279
-      firstFrame: 180
-      lastFrame: 181
+      firstFrame: 210
+      lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
