@@ -52,6 +52,7 @@ MonoBehaviour:
   walkAcceleration: 20
   airAcceleration: 30
   groundDeceleration: 50
+  status: 0
   rb: {fileID: 1909074879}
 --- !u!61 &1909074877
 BoxCollider2D:
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.054655194, y: 4.7790985}
+  m_Offset: {x: -0.3, y: 4.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,8 +78,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6822073, y: 9.734734}
-  m_EdgeRadius: 0.1
+  m_Size: {x: 2.7, y: 9.5}
+  m_EdgeRadius: 0
 --- !u!50 &1909074879
 Rigidbody2D:
   serializedVersion: 4
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5108e6fb02599f40ab5b5ab79c8b515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementScript: {fileID: 0}
   jumpHeight: 50
   numJumps: 0
   maxJumps: 2
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dc211ca5a8ac1439d2d824b790092b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crouch: 0
+  movementScript: {fileID: 0}
   crouchDiffHeight: 0
 --- !u!114 &844034320
 MonoBehaviour:
@@ -141,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406ac7733711d564ebbb722b813fc48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpScript: {fileID: 906264327}
+  movementScript: {fileID: 2252502367576737435}
 --- !u!1001 &3998585137301922186
 PrefabInstance:
   m_ObjectHideFlags: 0

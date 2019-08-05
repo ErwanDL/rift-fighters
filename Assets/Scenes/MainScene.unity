@@ -2426,18 +2426,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff35ec1b3450b1d4e81b2b58d9fff9c6, type: 3}
---- !u!114 &1499071919 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
-    type: 3}
-  m_PrefabInstance: {fileID: 3803072968092121497}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b328b3b6499769049ac7144987b923b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1900387815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,29 +3082,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1909074877, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1909074877, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1909074877, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: m_Offset.y
-      value: 4.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1909074877, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: m_Size.x
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1909074877, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: m_Size.y
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 844034320, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: movementScript
-      value: 
-      objectReference: {fileID: 1499071919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
