@@ -35,10 +35,10 @@ public class CharacterJump : MonoBehaviour
         {
             numJumps = 0;
         }
+
     }
     private bool canJump()
     {
         return numJumps < maxJumps && crouchScript.crouch == false;
     }
-
 }

@@ -18,7 +18,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField, Tooltip("Apply more gravity")]
     private float addedGravity = 20f;
-    private Vector2 velocity;
+    private Vector2 velocity = default;
     [SerializeField]
     private Rigidbody2D rb;
 

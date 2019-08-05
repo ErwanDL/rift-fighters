@@ -7,6 +7,7 @@ TagManager:
   - Jumpable
   - YouShallNotPass
   - Ground
+  - Ennemy
   layers:
   - Default
   - TransparentFX
