@@ -4,38 +4,49 @@ public class CharacterCrouch : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [HideInInspector]
-    public bool crouch;
-    private BoxCollider2D hitbox;
+    [SerializeField]
+    private CharacterMovement movementScript;
     [SerializeField]
     private float crouchDiffHeight;
+
+    private BoxCollider2D hitbox;
+    private Vector2 standingHitboxSize;
+    private Vector2 standingHitboxOffset;
+    private Vector2 crouchingHitboxSize;
+    private Vector2 crouchingHitboxOffset;
+
     void Start()
     {
-        crouch = false;
+        movementScript = GetComponent<CharacterMovement>();
         hitbox = GetComponent<BoxCollider2D>();
-        crouchDiffHeight = hitbox.size[1] / 2;
+        standingHitboxSize = hitbox.size;
+        standingHitboxOffset = hitbox.offset;
+        crouchingHitboxSize = new Vector2(4.2f, 6.5f);
+        crouchingHitboxOffset = new Vector2(0.5f, 3.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("down"))
+        if (Input.GetKey("down") && (movementScript.status == Status.idle || movementScript.status == Status.running))
         {
             crouchOn();
-            crouch = true;
+            movementScript.status = Status.crouching;
         }
-        else
+        else if (!Input.GetKey("down") && movementScript.status == Status.crouching)
         {
             crouchOff();
-            crouch = false;
+            movementScript.status = Status.idle;
         }
     }
     void crouchOn()
     {
-        hitbox.size = new Vector2(hitbox.size[0], crouchDiffHeight);
+        hitbox.size = crouchingHitboxSize;
+        hitbox.offset = crouchingHitboxOffset;
     }
     void crouchOff()
     {
-        hitbox.size = new Vector2(hitbox.size[0], crouchDiffHeight * 2);
+        hitbox.size = standingHitboxSize;
+        hitbox.offset = standingHitboxOffset;
     }
 }
