@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35666296, g: 0.31847814, b: 0.3161539, a: 1}
+  m_IndirectSpecularColor: {r: 0.3566629, g: 0.31847814, b: 0.31615385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2426308}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ea7e2f93b435fee4f9f81a682222bd4b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -469,7 +469,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15970
+  m_Name: pb_Mesh14556
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 806533277}
   m_Layer: 0
   m_Name: LeftPlatform
-  m_TagString: Jumpable
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,7 +662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16002
+  m_Name: pb_Mesh14592
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -825,7 +825,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15944
+  m_Name: pb_Mesh14530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 680688411}
   m_Layer: 0
   m_Name: MainPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1356,7 +1356,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 342647808}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ea7e2f93b435fee4f9f81a682222bd4b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1863,7 +1863,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1121547723}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ea7e2f93b435fee4f9f81a682222bd4b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2198,7 +2198,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15960
+  m_Name: pb_Mesh14546
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2459,7 +2459,7 @@ GameObject:
   - component: {fileID: 1900387816}
   m_Layer: 0
   m_Name: RightPlatform
-  m_TagString: Jumpable
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2473,7 +2473,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1900387815}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ea7e2f93b435fee4f9f81a682222bd4b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2866,7 +2866,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16020
+  m_Name: pb_Mesh14610
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3102,8 +3102,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
-      propertyPath: speed
+      propertyPath: jumpHeight
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: maxJumps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: groundDeceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: walkAcceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252502367576737435, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: airAcceleration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909074879, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+      propertyPath: m_GravityScale
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2057411587110905834, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
