@@ -7,7 +7,7 @@ public class CharacterJump : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField]
-    private CharacterMovement movementScript = null;
+    private CharacterMovement charMovement = null;
 
     [SerializeField, Tooltip("Max height the character will jump regardless of gravity")]
     private float jumpHeight = 50f;
@@ -20,7 +20,7 @@ public class CharacterJump : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        movementScript = GetComponent<CharacterMovement>();
+        charMovement = GetComponent<CharacterMovement>();
         numJumps = 0;
     }
 
@@ -31,10 +31,10 @@ public class CharacterJump : MonoBehaviour
         {
             rb.velocity = new Vector2(0, jumpHeight);
             ++numJumps;
-            movementScript.status = Status.jumping;
+            charMovement.status = Status.jumping;
         }
-        if (rb.velocity.y < -0.1 && movementScript.status != Status.crouching)
-            movementScript.status = Status.falling;
+        if (rb.velocity.y < -0.1 && charMovement.status != Status.crouching)
+            charMovement.status = Status.falling;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -42,13 +42,13 @@ public class CharacterJump : MonoBehaviour
         if (coll.gameObject.CompareTag("Ground"))
         {
             numJumps = 0;
-            if (movementScript.status != Status.crouching)
-                movementScript.status = Status.idle;
+            if (charMovement.status != Status.crouching)
+                charMovement.status = Status.idle;
         }
     }
     private bool canJump()
     {
-        return numJumps < maxJumps && movementScript.status != Status.crouching;
+        return numJumps < maxJumps && charMovement.status != Status.crouching;
     }
 
 }

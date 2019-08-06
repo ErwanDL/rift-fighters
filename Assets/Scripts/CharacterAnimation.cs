@@ -5,7 +5,7 @@ public class CharacterAnimation : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    private CharacterMovement movementScript = null;
+    private CharacterMovement charMovement = null;
     private Status previousStatus;
 
     void Start()
@@ -16,12 +16,12 @@ public class CharacterAnimation : MonoBehaviour
 
     void Update()
     {
-        Status newStatus = movementScript.status;
+        Status newStatus = charMovement.status;
         if (newStatus == previousStatus)
             return;
         else
         {
-            setParameterToTrueAndOthersToFalse(movementScript.status);
+            setParameterToTrueAndOthersToFalse(charMovement.status);
             if (newStatus == Status.running)
                 anim.CrossFade("Running", 0.1f);
             else if (newStatus == Status.jumping)
@@ -31,7 +31,7 @@ public class CharacterAnimation : MonoBehaviour
             else if (newStatus == Status.crouching)
                 anim.CrossFade("Crouching", 0.1f);
             else
-                anim.CrossFade("Idle", 0.3f);
+                anim.CrossFade("Idle", 0.2f);
 
             previousStatus = newStatus;
         }
@@ -49,5 +49,10 @@ public class CharacterAnimation : MonoBehaviour
             }
         }
         anim.SetBool(parameterToSet, true);
+    }
+
+    public void launchAutoAttack()
+    {
+        anim.Play("AutoAttacking");
     }
 }
