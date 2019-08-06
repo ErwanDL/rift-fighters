@@ -2,45 +2,22 @@
 
 public class CharacterAnimation : MonoBehaviour
 {
-    private Animator anim;
+    [HideInInspector]
+    public Animator anim;
 
-    [SerializeField]
-    private CharacterMovement charMovement = null;
-    private Status previousStatus;
-
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
-        previousStatus = Status.idle;
     }
 
-    void Update()
+    private void Update()
     {
-        Status newStatus = charMovement.status;
-        if (newStatus == previousStatus)
-            return;
-        else
-        {
-            setParameterToTrueAndOthersToFalse(charMovement.status);
-            if (newStatus == Status.running)
-                anim.CrossFade("Running", 0.1f);
-            else if (newStatus == Status.jumping)
-                anim.CrossFade("Jumping", 0.1f);
-            else if (newStatus == Status.falling)
-                anim.CrossFade("Falling", 0.5f);
-            else if (newStatus == Status.crouching)
-                anim.CrossFade("Crouching", 0.1f);
-            else
-                anim.CrossFade("Idle", 0.2f);
-
-            previousStatus = newStatus;
-        }
+        /* foreach (AnimatorControllerParameter parameter in anim.parameters)
+            if (anim.GetBool(parameter.name))
+                Debug.Log(parameter.name); */
     }
-
-    void setParameterToTrueAndOthersToFalse(Status status)
+    public void setParameterToTrueAndOthersToFalse(string parameterToSet)
     {
-        string statusName = status.ToString();
-        string parameterToSet = "is" + statusName.Substring(0, 1).ToUpper() + statusName.Substring(1);
         foreach (AnimatorControllerParameter parameter in anim.parameters)
         {
             if (parameter.type == AnimatorControllerParameterType.Bool)
@@ -49,10 +26,5 @@ public class CharacterAnimation : MonoBehaviour
             }
         }
         anim.SetBool(parameterToSet, true);
-    }
-
-    public void launchAutoAttack()
-    {
-        anim.Play("AutoAttacking");
     }
 }

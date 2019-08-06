@@ -5,9 +5,11 @@ public class CharacterCrouch : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    private CharacterMovement charMovement;
+    private CharacterAnimation characterAnimation = null;
     [SerializeField]
     private float crouchDiffHeight;
+
+    public bool canCrouch = true;
 
     private BoxCollider2D hitbox;
     private Vector2 standingHitboxSize;
@@ -17,7 +19,6 @@ public class CharacterCrouch : MonoBehaviour
 
     void Start()
     {
-        charMovement = GetComponent<CharacterMovement>();
         hitbox = GetComponent<BoxCollider2D>();
         standingHitboxSize = hitbox.size;
         standingHitboxOffset = hitbox.offset;
@@ -28,15 +29,15 @@ public class CharacterCrouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("down") && (charMovement.status == Status.idle || charMovement.status == Status.running))
+        if (canCrouch && Input.GetKey("down") && (characterAnimation.anim.GetBool("isIdle") || characterAnimation.anim.GetBool("isRunning")))
         {
             crouchOn();
-            charMovement.status = Status.crouching;
+            characterAnimation.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (!Input.GetKey("down") && charMovement.status == Status.crouching)
+        else if (!Input.GetKey("down") && characterAnimation.anim.GetBool("isCrouching"))
         {
             crouchOff();
-            charMovement.status = Status.idle;
+            characterAnimation.setParameterToTrueAndOthersToFalse("isIdle");
         }
     }
     void crouchOn()

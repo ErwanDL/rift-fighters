@@ -15,7 +15,7 @@ public class Dummy : MonoBehaviour, IEnnemy
     {
         if (Input.GetKeyDown("space"))
         {
-            TakeDamage(10);
+            //TakeDamage(10);
         }
     }
     public void PerformAttack()

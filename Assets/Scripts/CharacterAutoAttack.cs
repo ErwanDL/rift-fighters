@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterAutoAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField, Tooltip("Drag&Drop the weapon holder so he can't hit himself")]
     private Collider2D weaponHolderCollider = null;
+
+    [SerializeField, Tooltip("Drag&Drop the GameObject handling the animation")]
+    private CharacterAnimation characterAnimation = null;
+
     void Start()
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), weaponHolderCollider);
@@ -17,20 +18,21 @@ public class CharacterAutoAttack : MonoBehaviour
     {
         if (Input.GetKeyDown("q"))
         {
-
-            performAttack();
+            UseAutoAttack();
         }
     }
-    void performAttack()
+
+    void UseAutoAttack()
     {
-        //animation
-        return;
+        if (!characterAnimation.anim.GetBool("isJumping") && !characterAnimation.anim.GetBool("isFalling"))
+            characterAnimation.anim.SetTrigger("autoAttack");
     }
 
     void onTriggerEnter(Collider2D col)
     {
         if (col.tag == "Ennemy")
         {
+            Debug.Log("Touched");
             col.GetComponent<IEnnemy>().TakeDamage(20);
         }
     }
