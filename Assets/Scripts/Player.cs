@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
-public class Dummy : MonoBehaviour, IEnnemy
+public class Player : MonoBehaviour, IEnnemy
 {
-    public int currentHealth = 100;
-    [SerializeField, Tooltip("Dummy's Max Health")]
-    private int maxHealth = 100;
+    private int _currentHealth;
+    public int currentHealth
+    {
+        get { return _currentHealth; }
+        set { _currentHealth = Mathf.Clamp(value, 0, maxHealth); }
+    }
+    [SerializeField, Tooltip("Player's Max Health")]
+    public int maxHealth = 100;
 
     void Start()
     {
@@ -22,18 +27,12 @@ public class Dummy : MonoBehaviour, IEnnemy
     {
         return;
     }
-
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
-            Die();
+            GameMaster.KillPlayer(this);
         }
-    }
-    void Die()
-    {
-        Destroy(gameObject);
     }
 }

@@ -23,11 +23,11 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private CharacterAnimation characterAnimation = null;
 
+    [HideInInspector]
+    public float moveInput;
+
     private void Start()
     {
-        speed *= 100;
-        walkAcceleration *= 100;
-        airAcceleration *= 100;
         rb = GetComponent<Rigidbody2D>();
         characterAnimation.setParameterToTrueAndOthersToFalse("isIdle");
     }
@@ -37,12 +37,12 @@ public class CharacterMovement : MonoBehaviour
         if (!canMove)
             return;
 
-        float moveInput = Input.GetAxisRaw("Horizontal");
+        moveInput = Input.GetAxisRaw("Horizontal");
         //Debug.Log(status.ToString());
 
         if (moveInput != 0 && !characterAnimation.anim.GetBool("isCrouching"))
         {
-            rb.velocity = new Vector2(Mathf.MoveTowards(velocity.x, speed * moveInput, walkAcceleration * Time.deltaTime), rb.velocity.y);
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
             Vector3 currentRot = transform.rotation.eulerAngles;
             float rotY = moveInput > 0 ? 0 : 180;
             Vector3 newRot = new Vector3(0, rotY, 0);
