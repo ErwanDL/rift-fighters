@@ -27,12 +27,12 @@ public class CharacterCrouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canCrouch && Input.GetKey("down") && (charAnim.animator.GetBool("isIdle") || charAnim.animator.GetBool("isRunning")))
+        if (canCrouch && Input.GetKeyDown("down"))
         {
             crouchOn();
             charAnim.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (!Input.GetKey("down") && charAnim.animator.GetBool("isCrouching"))
+        else if (charAnim.animator.GetBool("isCrouching") && !(Input.GetKey("down") && canCrouch))
         {
             crouchOff();
             charAnim.setParameterToTrueAndOthersToFalse("isIdle");

@@ -7,6 +7,7 @@ public class CharacterJump : MonoBehaviour
     private Rigidbody2D rb;
 
     private CharacterAnimation charAnim;
+    private CharacterCrouch charCrouch;
 
     [SerializeField]
     private float jumpHeight = 50f;
@@ -21,6 +22,7 @@ public class CharacterJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         charAnim = GetComponent<CharacterAnimation>();
+        charCrouch = GetComponent<CharacterCrouch>();
         numJumps = 0;
     }
 
@@ -32,9 +34,13 @@ public class CharacterJump : MonoBehaviour
             rb.velocity = new Vector2(0, jumpHeight);
             ++numJumps;
             charAnim.setParameterToTrueAndOthersToFalse("isJumping");
+            charCrouch.canCrouch = false;
         }
         if (rb.velocity.y < -0.1 && !charAnim.animator.GetBool("isCrouching"))
+        {
             charAnim.setParameterToTrueAndOthersToFalse("isFalling");
+            charCrouch.canCrouch = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -43,7 +49,10 @@ public class CharacterJump : MonoBehaviour
         {
             numJumps = 0;
             if (!charAnim.animator.GetBool("isCrouching"))
+            {
                 charAnim.setParameterToTrueAndOthersToFalse("isIdle");
+                charCrouch.canCrouch = true;
+            }
         }
 
     }
