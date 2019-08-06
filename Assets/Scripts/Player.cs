@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IEnnemy
     {
         if (Input.GetKeyDown("space"))
         {
-            TakeDamage(10);
+            //TakeDamage(10);
         }
     }
     public void PerformAttack()

@@ -2,52 +2,29 @@
 
 public class CharacterAnimation : MonoBehaviour
 {
-    private Animator anim;
+    [HideInInspector]
+    public Animator animator;
 
-    [SerializeField]
-    private CharacterMovement movementScript = null;
-    private Status previousStatus;
-
-    void Start()
+    void Awake()
     {
-        anim = GetComponent<Animator>();
-        previousStatus = Status.idle;
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        Status newStatus = movementScript.status;
-        if (newStatus == previousStatus)
-            return;
-        else
-        {
-            setParameterToTrueAndOthersToFalse(movementScript.status);
-            if (newStatus == Status.running)
-                anim.CrossFade("Running", 0.1f);
-            else if (newStatus == Status.jumping)
-                anim.CrossFade("Jumping", 0.1f);
-            else if (newStatus == Status.falling)
-                anim.CrossFade("Falling", 0.5f);
-            else if (newStatus == Status.crouching)
-                anim.CrossFade("Crouching", 0.1f);
-            else
-                anim.CrossFade("Idle", 0.3f);
-
-            previousStatus = newStatus;
-        }
+        /* foreach (AnimatorControllerParameter parameter in anim.parameters)
+            if (anim.GetBool(parameter.name))
+                Debug.Log(parameter.name); */
     }
-
-    void setParameterToTrueAndOthersToFalse(Status status)
+    public void setParameterToTrueAndOthersToFalse(string parameterToSet)
     {
-        string statusName = status.ToString();
-        string parameterToSet = "is" + statusName.Substring(0, 1).ToUpper() + statusName.Substring(1);
-        foreach (AnimatorControllerParameter parameter in anim.parameters)
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
             if (parameter.type == AnimatorControllerParameterType.Bool)
             {
-                anim.SetBool(parameter.name, false);
+                animator.SetBool(parameter.name, false);
             }
         }
-        anim.SetBool(parameterToSet, true);
+        animator.SetBool(parameterToSet, true);
     }
 }

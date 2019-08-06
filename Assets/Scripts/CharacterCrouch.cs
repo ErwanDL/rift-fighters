@@ -4,12 +4,12 @@ public class CharacterCrouch : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField]
-    private CharacterMovement movementScript;
-    [SerializeField]
-    private float crouchDiffHeight;
+    private CharacterAnimation charAnim;
 
-    private BoxCollider2D hitbox;
+    public bool canCrouch = true;
+
+    [SerializeField]
+    private BoxCollider2D hitbox = null;
     private Vector2 standingHitboxSize;
     private Vector2 standingHitboxOffset;
     private Vector2 crouchingHitboxSize;
@@ -17,26 +17,25 @@ public class CharacterCrouch : MonoBehaviour
 
     void Start()
     {
-        movementScript = GetComponent<CharacterMovement>();
-        hitbox = GetComponent<BoxCollider2D>();
-        standingHitboxSize = hitbox.size;
+        charAnim = GetComponent<CharacterAnimation>();
         standingHitboxOffset = hitbox.offset;
-        crouchingHitboxSize = new Vector2(4.2f, 6.5f);
-        crouchingHitboxOffset = new Vector2(0.5f, 3.2f);
+        standingHitboxSize = hitbox.size;
+        crouchingHitboxOffset = new Vector2(-0.15f, 0.78f);
+        crouchingHitboxSize = new Vector2(0.9f, 1.55f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("down") && (movementScript.status == Status.idle || movementScript.status == Status.running))
+        if (canCrouch && Input.GetKey("down") && (charAnim.animator.GetBool("isIdle") || charAnim.animator.GetBool("isRunning")))
         {
             crouchOn();
-            movementScript.status = Status.crouching;
+            charAnim.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (!Input.GetKey("down") && movementScript.status == Status.crouching)
+        else if (!Input.GetKey("down") && charAnim.animator.GetBool("isCrouching"))
         {
             crouchOff();
-            movementScript.status = Status.idle;
+            charAnim.setParameterToTrueAndOthersToFalse("isIdle");
         }
     }
     void crouchOn()
