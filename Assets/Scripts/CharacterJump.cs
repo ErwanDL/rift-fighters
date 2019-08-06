@@ -45,10 +45,10 @@ public class CharacterJump : MonoBehaviour
             if (charMovement.status != Status.crouching)
                 charMovement.status = Status.idle;
         }
+
     }
     private bool canJump()
     {
         return numJumps < maxJumps && charMovement.status != Status.crouching;
     }
-
 }
