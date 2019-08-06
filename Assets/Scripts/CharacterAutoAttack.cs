@@ -2,14 +2,13 @@
 
 public class CharacterAutoAttack : MonoBehaviour
 {
-    [SerializeField, Tooltip("Drag&Drop the weapon holder so he can't hit himself")]
+    [SerializeField]
     private Collider2D weaponHolderCollider = null;
-
-    [SerializeField, Tooltip("Drag&Drop the GameObject handling the animation")]
-    private CharacterAnimation characterAnimation = null;
+    private CharacterAnimation charAnim;
 
     void Start()
     {
+        charAnim = GetComponentInParent<CharacterAnimation>();
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), weaponHolderCollider);
     }
 
@@ -24,8 +23,8 @@ public class CharacterAutoAttack : MonoBehaviour
 
     void UseAutoAttack()
     {
-        if (!characterAnimation.anim.GetBool("isJumping") && !characterAnimation.anim.GetBool("isFalling"))
-            characterAnimation.anim.SetTrigger("autoAttack");
+        if (!charAnim.animator.GetBool("isJumping") && !charAnim.animator.GetBool("isFalling"))
+            charAnim.animator.SetTrigger("autoAttack");
     }
 
     void onTriggerEnter(Collider2D col)

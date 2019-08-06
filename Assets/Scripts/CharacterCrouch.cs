@@ -4,14 +4,12 @@ public class CharacterCrouch : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField]
-    private CharacterAnimation characterAnimation = null;
-    [SerializeField]
-    private float crouchDiffHeight;
+    private CharacterAnimation charAnim;
 
     public bool canCrouch = true;
 
-    private BoxCollider2D hitbox;
+    [SerializeField]
+    private BoxCollider2D hitbox = null;
     private Vector2 standingHitboxSize;
     private Vector2 standingHitboxOffset;
     private Vector2 crouchingHitboxSize;
@@ -19,25 +17,25 @@ public class CharacterCrouch : MonoBehaviour
 
     void Start()
     {
-        hitbox = GetComponent<BoxCollider2D>();
-        standingHitboxSize = hitbox.size;
+        charAnim = GetComponent<CharacterAnimation>();
         standingHitboxOffset = hitbox.offset;
-        crouchingHitboxSize = new Vector2(4.2f, 6.5f);
-        crouchingHitboxOffset = new Vector2(0.5f, 3.2f);
+        standingHitboxSize = hitbox.size;
+        crouchingHitboxOffset = new Vector2(-0.15f, 0.78f);
+        crouchingHitboxSize = new Vector2(0.9f, 1.55f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canCrouch && Input.GetKey("down") && (characterAnimation.anim.GetBool("isIdle") || characterAnimation.anim.GetBool("isRunning")))
+        if (canCrouch && Input.GetKey("down") && (charAnim.animator.GetBool("isIdle") || charAnim.animator.GetBool("isRunning")))
         {
             crouchOn();
-            characterAnimation.setParameterToTrueAndOthersToFalse("isCrouching");
+            charAnim.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (!Input.GetKey("down") && characterAnimation.anim.GetBool("isCrouching"))
+        else if (!Input.GetKey("down") && charAnim.animator.GetBool("isCrouching"))
         {
             crouchOff();
-            characterAnimation.setParameterToTrueAndOthersToFalse("isIdle");
+            charAnim.setParameterToTrueAndOthersToFalse("isIdle");
         }
     }
     void crouchOn()

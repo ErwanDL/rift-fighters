@@ -3,11 +3,11 @@
 public class CharacterAnimation : MonoBehaviour
 {
     [HideInInspector]
-    public Animator anim;
+    public Animator animator;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -18,13 +18,13 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void setParameterToTrueAndOthersToFalse(string parameterToSet)
     {
-        foreach (AnimatorControllerParameter parameter in anim.parameters)
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
             if (parameter.type == AnimatorControllerParameterType.Bool)
             {
-                anim.SetBool(parameter.name, false);
+                animator.SetBool(parameter.name, false);
             }
         }
-        anim.SetBool(parameterToSet, true);
+        animator.SetBool(parameterToSet, true);
     }
 }

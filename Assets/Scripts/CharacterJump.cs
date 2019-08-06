@@ -6,14 +6,12 @@ public class CharacterJump : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private CharacterAnimation characterAnimation = null;
+    private CharacterAnimation charAnim;
 
-    [SerializeField, Tooltip("Max height the character will jump regardless of gravity")]
+    [SerializeField]
     private float jumpHeight = 50f;
-    [SerializeField, Tooltip("Number of jumps the character has done so far (resets when touching the ground")]
     private int numJumps = 0;
-    [SerializeField, Tooltip("Maximum number of jumps the character can perform in a row (always >= numJumps)")]
+    [SerializeField, Tooltip("Maximum number of jumps the character can perform in a row")]
     private int maxJumps = 2;
 
     public bool canJump = true;
@@ -22,6 +20,7 @@ public class CharacterJump : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        charAnim = GetComponent<CharacterAnimation>();
         numJumps = 0;
     }
 
@@ -32,10 +31,10 @@ public class CharacterJump : MonoBehaviour
         {
             rb.velocity = new Vector2(0, jumpHeight);
             ++numJumps;
-            characterAnimation.setParameterToTrueAndOthersToFalse("isJumping");
+            charAnim.setParameterToTrueAndOthersToFalse("isJumping");
         }
-        if (rb.velocity.y < -0.1 && !characterAnimation.anim.GetBool("isCrouching"))
-            characterAnimation.setParameterToTrueAndOthersToFalse("isFalling");
+        if (rb.velocity.y < -0.1 && !charAnim.animator.GetBool("isCrouching"))
+            charAnim.setParameterToTrueAndOthersToFalse("isFalling");
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -43,13 +42,13 @@ public class CharacterJump : MonoBehaviour
         if (coll.gameObject.CompareTag("Ground"))
         {
             numJumps = 0;
-            if (!characterAnimation.anim.GetBool("isCrouching"))
-                characterAnimation.setParameterToTrueAndOthersToFalse("isIdle");
+            if (!charAnim.animator.GetBool("isCrouching"))
+                charAnim.setParameterToTrueAndOthersToFalse("isIdle");
         }
 
     }
     private bool canStillJump()
     {
-        return numJumps < maxJumps && !characterAnimation.anim.GetBool("isCrouching");
+        return numJumps < maxJumps && !charAnim.animator.GetBool("isCrouching");
     }
 }
