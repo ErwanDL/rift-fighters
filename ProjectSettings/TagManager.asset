@@ -7,7 +7,7 @@ TagManager:
   - Jumpable
   - YouShallNotPass
   - Ground
-  - Ennemy
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -17,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Blue Side
+  - Red Side
   - 
   - 
   - 
