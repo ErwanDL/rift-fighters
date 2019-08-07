@@ -45,14 +45,12 @@ public class CharacterJump : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.CompareTag("Ground"))
+        if (coll.gameObject.CompareTag("Ground") && !charAnim.animator.GetBool("isCrouching"))
         {
             numJumps = 0;
-            if (!charAnim.animator.GetBool("isCrouching"))
-            {
-                charAnim.setParameterToTrueAndOthersToFalse("isIdle");
-                charCrouch.canCrouch = true;
-            }
+            charAnim.setParameterToTrueAndOthersToFalse("isIdle");
+            charCrouch.canCrouch = true;
+
         }
 
     }

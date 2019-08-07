@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 893548729428765354}
   - component: {fileID: 1279828021639862751}
   - component: {fileID: 3719759208217599657}
-  - component: {fileID: 2949790904111584849}
+  - component: {fileID: 9113363873973259977}
   m_Layer: 0
   m_Name: Yasuo
   m_TagString: Untagged
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  deceleration: 200
+  deceleration: 400
   canRun: 1
   moveInput: 0
 --- !u!114 &893548729428765354
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!114 &2949790904111584849
+--- !u!114 &9113363873973259977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

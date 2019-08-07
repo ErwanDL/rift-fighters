@@ -26,7 +26,7 @@ public class CharacterRun : MonoBehaviour
         charAnim.setParameterToTrueAndOthersToFalse("isIdle");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
 

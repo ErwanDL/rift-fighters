@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpellYasuoE : MonoBehaviour
+public class YasuoE : MonoBehaviour
 {
     private Rigidbody2D rb;
     public DashState dashState;
