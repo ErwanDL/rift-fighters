@@ -8,6 +8,7 @@ public class CharacterJump : MonoBehaviour
 
     private CharacterAnimation charAnim;
     private CharacterCrouch charCrouch;
+    private CharacterAutoAttack charAttack;
 
     [SerializeField]
     private float jumpHeight = 50f;
@@ -23,6 +24,7 @@ public class CharacterJump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         charAnim = GetComponent<CharacterAnimation>();
         charCrouch = GetComponent<CharacterCrouch>();
+        charAttack = GetComponent<CharacterAutoAttack>();
         numJumps = 0;
     }
 
@@ -31,15 +33,27 @@ public class CharacterJump : MonoBehaviour
     {
         if (canJump && Input.GetKeyDown("space") && canStillJump())
         {
-            rb.velocity = new Vector2(0, jumpHeight);
-            ++numJumps;
-            charAnim.setParameterToTrueAndOthersToFalse("isJumping");
+            if (numJumps == 1)
+            {
+                charAnim.setParameterToTrueAndOthersToFalse("isDoubleJumping");
+            }
+            else
+                charAnim.setParameterToTrueAndOthersToFalse("isJumping");
             charCrouch.canCrouch = false;
+            charAttack.canAutoAttack = false;
+            float currentY = rb.velocity.y;
+            if (currentY <= 0)
+                rb.velocity = new Vector2(0, jumpHeight);
+            else
+                rb.velocity = new Vector2(0, currentY + jumpHeight);
+            ++numJumps;
+
         }
         if (rb.velocity.y < -0.1 && !charAnim.animator.GetBool("isCrouching"))
         {
             charAnim.setParameterToTrueAndOthersToFalse("isFalling");
             charCrouch.canCrouch = false;
+            charAttack.canAutoAttack = false;
         }
     }
 
@@ -50,6 +64,7 @@ public class CharacterJump : MonoBehaviour
             numJumps = 0;
             charAnim.setParameterToTrueAndOthersToFalse("isIdle");
             charCrouch.canCrouch = true;
+            charAttack.canAutoAttack = true;
 
         }
 

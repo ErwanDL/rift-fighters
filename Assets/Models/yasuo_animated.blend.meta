@@ -14,13 +14,19 @@ ModelImporter:
     second: Jump
   - first:
       74: 2104999889037103153
-    second: Fall
+    second: DoubleJump
   - first:
       74: -7813635296899823279
-    second: Crouch
+    second: Fall
   - first:
       74: 3108024684285223982
+    second: Crouch
+  - first:
+      74: 373344647740410536
     second: AutoAttack
+  - first:
+      74: -3852590933545650765
+    second: DashE
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -64,7 +70,7 @@ ModelImporter:
       takeName: Armature|Running
       internalID: -3828583913261678786
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -93,7 +99,7 @@ ModelImporter:
       takeName: Armature|Running
       internalID: -9121621101649706817
       firstFrame: 100
-      lastFrame: 140
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -121,8 +127,37 @@ ModelImporter:
       name: Jump
       takeName: Armature|Running
       internalID: 8521470458871766595
-      firstFrame: 150
-      lastFrame: 170
+      firstFrame: 200
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DoubleJump
+      takeName: Armature|Running
+      internalID: 2104999889037103153
+      firstFrame: 300
+      lastFrame: 350
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -149,9 +184,9 @@ ModelImporter:
     - serializedVersion: 16
       name: Fall
       takeName: Armature|Running
-      internalID: 2104999889037103153
-      firstFrame: 180
-      lastFrame: 200
+      internalID: -7813635296899823279
+      firstFrame: 400
+      lastFrame: 450
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -178,9 +213,9 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch
       takeName: Armature|Running
-      internalID: -7813635296899823279
-      firstFrame: 210
-      lastFrame: 260
+      internalID: 3108024684285223982
+      firstFrame: 500
+      lastFrame: 550
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -207,9 +242,38 @@ ModelImporter:
     - serializedVersion: 16
       name: AutoAttack
       takeName: Armature|Running
-      internalID: 3108024684285223982
-      firstFrame: 280
-      lastFrame: 330
+      internalID: 373344647740410536
+      firstFrame: 600
+      lastFrame: 650
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DashE
+      takeName: Armature|Animations
+      internalID: -3852590933545650765
+      firstFrame: 700
+      lastFrame: 701
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -217,7 +281,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

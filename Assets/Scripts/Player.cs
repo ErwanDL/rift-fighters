@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IEnnemy
+public class Player : MonoBehaviour
 {
     private int _currentHealth;
     public int currentHealth

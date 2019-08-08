@@ -12,9 +12,9 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
-        /* foreach (AnimatorControllerParameter parameter in anim.parameters)
-            if (anim.GetBool(parameter.name))
-                Debug.Log(parameter.name); */
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+            if (animator.GetBool(parameter.name))
+                Debug.Log(parameter.name);
     }
     public void setParameterToTrueAndOthersToFalse(string parameterToSet)
     {
