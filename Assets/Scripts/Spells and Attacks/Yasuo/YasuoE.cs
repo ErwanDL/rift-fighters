@@ -2,37 +2,55 @@
 
 public class YasuoE : MonoBehaviour
 {
+    private CharacterRun charRun;
     private Rigidbody2D rb;
     public DashState dashState;
-    public float dashTimer;
-    public float maxDash = 20f;
+    private float dashTimer;
+    [SerializeField, Tooltip("Duration of the dash")]
+    private float dashTime = 0f;
+    [SerializeField, Tooltip("Cooldown of the dash")]
+    public float dashCooldown = 20f;
+
 
     public Vector2 savedVelocity;
+    private float lastDirection = 0f;
+    [SerializeField, Tooltip("Force of the dash")]
+    private float dashForce = 150f;
+    private float savedGravityScale = 0f;
 
     private void Start()
     {
+        charRun = GetComponent<CharacterRun>();
         rb = GetComponent<Rigidbody2D>();
+        savedGravityScale = rb.gravityScale;
     }
     void Update()
     {
+        if (Input.GetAxisRaw("Horizontal") != 0)
+            lastDirection = Input.GetAxisRaw("Horizontal");
         switch (dashState)
         {
             case DashState.Ready:
                 bool isDashKeyDown = Input.GetKeyDown("e");
+
                 if (isDashKeyDown)
                 {
+                    charRun.canRun = false;
+                    rb.gravityScale = 0;
                     savedVelocity = rb.velocity;
-                    rb.velocity += new Vector2(rb.velocity.x * 3500f, rb.velocity.y);
+                    rb.velocity = new Vector2(lastDirection * dashForce, 0);
                     dashState = DashState.Dashing;
                 }
                 break;
             case DashState.Dashing:
-                dashTimer += Time.deltaTime * 3;
-                if (dashTimer >= maxDash)
+                dashTimer += Time.deltaTime;
+                if (dashTimer >= dashTime)
                 {
-                    dashTimer = maxDash;
+                    dashTimer = dashCooldown;
                     rb.velocity = savedVelocity;
                     dashState = DashState.Cooldown;
+                    charRun.canRun = true;
+                    rb.gravityScale = savedGravityScale;
                 }
                 break;
             case DashState.Cooldown:
