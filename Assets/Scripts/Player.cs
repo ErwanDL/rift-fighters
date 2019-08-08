@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IEnnemy
 {
@@ -11,17 +12,15 @@ public class Player : MonoBehaviour, IEnnemy
     [SerializeField, Tooltip("Player's Max Health")]
     public int maxHealth = 100;
 
+    [System.Serializable]
+    private class MyEvent : UnityEvent<float> { }
+
+    [SerializeField]
+    private MyEvent onHealthChange = null;
+
     void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            //TakeDamage(10);
-        }
     }
     public void PerformAttack()
     {
@@ -30,7 +29,8 @@ public class Player : MonoBehaviour, IEnnemy
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        if (currentHealth <= 0)
+        onHealthChange.Invoke((float)currentHealth / (float)maxHealth);
+        if (currentHealth == 0)
         {
             GameMaster.KillPlayer(this);
         }
