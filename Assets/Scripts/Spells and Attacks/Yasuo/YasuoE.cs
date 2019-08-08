@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-public class YasuoE : MonoBehaviour
+public class YasuoE : Spell
 {
     private CharacterRun charRun;
+    private CharacterAnimation charAnim;
     private Rigidbody2D rb;
     public DashState dashState;
     private float dashTimer;
     [SerializeField, Tooltip("Duration of the dash")]
     private float dashTime = 0f;
     [SerializeField, Tooltip("Cooldown of the dash")]
-    public float dashCooldown = 20f;
 
 
     public Vector2 savedVelocity;
@@ -21,6 +21,7 @@ public class YasuoE : MonoBehaviour
     private void Start()
     {
         charRun = GetComponent<CharacterRun>();
+        charAnim = GetComponent<CharacterAnimation>();
         rb = GetComponent<Rigidbody2D>();
         savedGravityScale = rb.gravityScale;
     }
@@ -40,24 +41,26 @@ public class YasuoE : MonoBehaviour
                     savedVelocity = rb.velocity;
                     rb.velocity = new Vector2(lastDirection * dashForce, 0);
                     dashState = DashState.Dashing;
+                    charAnim.setParameterToTrueAndOthersToFalse("isDashing");
                 }
                 break;
             case DashState.Dashing:
                 dashTimer += Time.deltaTime;
                 if (dashTimer >= dashTime)
                 {
-                    dashTimer = dashCooldown;
+                    dashTimer = 0;
+                    cooldownTimer = baseCooldown;
                     rb.velocity = savedVelocity;
-                    dashState = DashState.Cooldown;
+                    dashState = DashState.InCooldown;
                     charRun.canRun = true;
                     rb.gravityScale = savedGravityScale;
                 }
                 break;
-            case DashState.Cooldown:
-                dashTimer -= Time.deltaTime;
-                if (dashTimer <= 0)
+            case DashState.InCooldown:
+                cooldownTimer -= Time.deltaTime;
+                if (cooldownTimer <= 0)
                 {
-                    dashTimer = 0;
+                    cooldownTimer = 0;
                     dashState = DashState.Ready;
                 }
                 break;
@@ -69,6 +72,6 @@ public enum DashState
 {
     Ready,
     Dashing,
-    Cooldown
+    InCooldown
 }
 
