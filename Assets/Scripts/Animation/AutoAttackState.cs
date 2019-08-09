@@ -5,6 +5,8 @@ public class AutoAttackState : StateMachineBehaviour
     private CharacterRun charRun;
     private CharacterJump charJump;
     private CharacterCrouch charCrouch;
+
+    private YasuoE yasE;
     private BoxCollider2D coll;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -18,6 +20,8 @@ public class AutoAttackState : StateMachineBehaviour
             charCrouch = animator.GetComponent<CharacterCrouch>();
         if (coll == null)
             coll = animator.GetComponent<CharacterAutoAttack>().weaponCollider;
+        if (yasE == null)
+            yasE = animator.GetComponent<YasuoE>();
         canDoOtherActions(false);
     }
 
@@ -32,6 +36,7 @@ public class AutoAttackState : StateMachineBehaviour
         charRun.canRun = b;
         charJump.canJump = b;
         charCrouch.canCrouch = b;
+        yasE.canDash = b;
         coll.enabled = !b;
     }
 

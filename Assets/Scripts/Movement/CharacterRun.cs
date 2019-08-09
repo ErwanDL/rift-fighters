@@ -37,7 +37,7 @@ public class CharacterRun : MonoBehaviour
             float rotY = moveInput > 0 ? 90 : 270;
             Vector3 newRot = new Vector3(0, rotY, 0);
             transform.rotation = Quaternion.Euler(newRot);
-            if (charAnim.animator.GetBool("isIdle"))
+            if (charAnim.animator.GetBool("isIdle") || charAnim.animator.GetBool("isDashing"))
             {
                 charAnim.setParameterToTrueAndOthersToFalse("isRunning");
             }
