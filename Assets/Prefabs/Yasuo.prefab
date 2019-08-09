@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 993830076}
   - component: {fileID: 993830077}
   m_Layer: 8
-  m_Name: SwordCollider
+  m_Name: AutoAttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,6 +345,7 @@ MonoBehaviour:
   dashDuration: 0.25
   direction: {x: 0, y: 0}
   dashForce: 150
+  canDash: 0
 --- !u!1001 &311958629427084405
 PrefabInstance:
   m_ObjectHideFlags: 0
