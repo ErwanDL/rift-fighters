@@ -6,6 +6,6 @@ public abstract class Spell : MonoBehaviour
     public float cooldownTimer = 0f;
 
     [SerializeField]
-    protected float baseCooldown = 10f;
+    public float baseCooldown = 10f;
 }
 
