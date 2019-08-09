@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3566629, g: 0.31847814, b: 0.31615385, a: 1}
+  m_IndirectSpecularColor: {r: 0.35666296, g: 0.31847814, b: 0.3161539, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -868,33 +868,27 @@ PrefabInstance:
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 372691646}
-    - target: {fileID: 3719759208217599657, guid: 8c6a55b711eed704890129a6e8630717,
+    - target: {fileID: 3703882989859205491, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeHealth
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113363873973259977, guid: 8c6a55b711eed704890129a6e8630717,
-        type: 3}
-      propertyPath: dashCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113363873973259977, guid: 8c6a55b711eed704890129a6e8630717,
-        type: 3}
-      propertyPath: dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113363873973259977, guid: 8c6a55b711eed704890129a6e8630717,
-        type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 297866832}
+    - target: {fileID: 624044869, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 946096944}
+    - target: {fileID: 624044869, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
       propertyPath: baseCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113363873973259977, guid: 8c6a55b711eed704890129a6e8630717,
-        type: 3}
-      propertyPath: dashForce
-      value: 150
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+--- !u!61 &297866832 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 993830076, guid: 8c6a55b711eed704890129a6e8630717,
+    type: 3}
+  m_PrefabInstance: {fileID: 297866826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &342647808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b9b3c65d4de0045a5feed4d87a9060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 636977557}
   spell: {fileID: 624044861}
 --- !u!114 &636977560
 MonoBehaviour:
@@ -2558,6 +2551,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db2e1a101670bca4da797f6d01c512d8, type: 3}
+--- !u!61 &946096944 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 946096944, guid: 8c6a55b711eed704890129a6e8630717,
+    type: 3}
+  m_PrefabInstance: {fileID: 297866826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008774130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +3922,7 @@ GameObject:
   - component: {fileID: 1689813060}
   - component: {fileID: 1689813059}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

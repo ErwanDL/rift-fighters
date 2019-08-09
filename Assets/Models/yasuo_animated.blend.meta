@@ -29,7 +29,7 @@ ModelImporter:
     second: DashE
   - first:
       74: 7419959976214497146
-    second: Qbasic
+    second: BasicQ
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -301,7 +301,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Qbasic
+      name: BasicQ
       takeName: Armature|Animations
       internalID: 7419959976214497146
       firstFrame: 800

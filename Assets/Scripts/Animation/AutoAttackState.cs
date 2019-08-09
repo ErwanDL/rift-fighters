@@ -19,7 +19,7 @@ public class AutoAttackState : StateMachineBehaviour
         if (charCrouch == null)
             charCrouch = animator.GetComponent<CharacterCrouch>();
         if (coll == null)
-            coll = animator.GetComponent<CharacterAutoAttack>().weaponCollider;
+            coll = animator.GetComponent<CharacterAutoAttack>().coll;
         if (yasE == null)
             yasE = animator.GetComponent<YasuoE>();
         canDoOtherActions(false);

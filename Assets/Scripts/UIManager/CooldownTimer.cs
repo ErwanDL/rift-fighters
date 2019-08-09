@@ -3,11 +3,15 @@ using UnityEngine.UI;
 
 public class CooldownTimer : MonoBehaviour
 {
-    [SerializeField, Tooltip("Icone")]
-    private Image content = null;
+    private Image content;
 
     [SerializeField]
     private Spell spell = null;
+
+    private void Start()
+    {
+        content = GetComponent<Image>();
+    }
 
     private void Update()
     {

@@ -5,8 +5,10 @@ public class CharacterCrouch : MonoBehaviour
     // Start is called before the first frame update
 
     private CharacterAnimation charAnim;
+    private CharacterRun charRun;
 
     public bool canCrouch = true;
+    private bool isCrouched = false;
 
     [SerializeField]
     private BoxCollider2D hitbox = null;
@@ -18,6 +20,7 @@ public class CharacterCrouch : MonoBehaviour
     void Start()
     {
         charAnim = GetComponent<CharacterAnimation>();
+        charRun = GetComponent<CharacterRun>();
         standingHitboxOffset = hitbox.offset;
         standingHitboxSize = hitbox.size;
         crouchingHitboxOffset = new Vector2(-0.15f, 0.78f);
@@ -32,7 +35,7 @@ public class CharacterCrouch : MonoBehaviour
             crouchOn();
             charAnim.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (charAnim.animator.GetBool("isCrouching") && !(Input.GetKey("down") && canCrouch))
+        else if (isCrouched && !(Input.GetKey("down") && canCrouch))
         {
             crouchOff();
             charAnim.setParameterToTrueAndOthersToFalse("isIdle");
@@ -42,10 +45,14 @@ public class CharacterCrouch : MonoBehaviour
     {
         hitbox.size = crouchingHitboxSize;
         hitbox.offset = crouchingHitboxOffset;
+        isCrouched = true;
+        charRun.canRun = false;
     }
     void crouchOff()
     {
         hitbox.size = standingHitboxSize;
         hitbox.offset = standingHitboxOffset;
+        isCrouched = false;
+        charRun.canRun = true;
     }
 }

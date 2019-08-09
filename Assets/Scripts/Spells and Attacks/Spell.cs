@@ -7,5 +7,7 @@ public abstract class Spell : MonoBehaviour
 
     [SerializeField]
     public float baseCooldown = 10f;
+
+    public bool canUseSpell = true;
 }
 

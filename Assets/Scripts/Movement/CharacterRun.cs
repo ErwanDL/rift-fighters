@@ -30,7 +30,7 @@ public class CharacterRun : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        if (canRun && moveInput != 0 && !charAnim.animator.GetBool("isCrouching"))
+        if (canRun && moveInput != 0)
         {
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
             Vector3 currentRot = transform.rotation.eulerAngles;

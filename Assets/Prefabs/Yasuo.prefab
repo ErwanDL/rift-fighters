@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &946096941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946096942}
+  - component: {fileID: 946096944}
+  - component: {fileID: 946096943}
+  m_Layer: 8
+  m_Name: BasicQCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946096942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946096941}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 840767001618866452}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!61 &946096944
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946096941}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.8684961, y: 1.4249594}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.8604252, y: 0.623713}
+  m_EdgeRadius: 0
+--- !u!114 &946096943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946096941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21397e68405bf3147abc06040366e0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedAttack: {fileID: 624044869}
 --- !u!1 &993830074
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993830075}
   - component: {fileID: 993830076}
-  - component: {fileID: 993830077}
+  - component: {fileID: 297866830}
   m_Layer: 8
   m_Name: AutoAttackCollider
   m_TagString: Untagged
@@ -58,7 +129,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6304157, y: 0.623713}
   m_EdgeRadius: 0
---- !u!114 &993830077
+--- !u!114 &297866830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,25 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 993830074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b279b9421280c48bc2db5a46e41224, type: 3}
+  m_Script: {fileID: 11500000, guid: 21397e68405bf3147abc06040366e0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3703882989859205491}
-        m_MethodName: OnHitEnemy
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: WeaponTrigger+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  associatedAttack: {fileID: 3703882989859205491}
 --- !u!1 &1830367709
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +217,7 @@ GameObject:
   - component: {fileID: 3703882989859205491}
   - component: {fileID: 3719759208217599657}
   - component: {fileID: 9113363873973259977}
+  - component: {fileID: 624044869}
   m_Layer: 8
   m_Name: Yasuo
   m_TagString: Character
@@ -182,6 +239,7 @@ Transform:
   - {fileID: 4696964651278653295}
   - {fileID: 1830367710}
   - {fileID: 993830075}
+  - {fileID: 946096942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -266,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5108e6fb02599f40ab5b5ab79c8b515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  qSpell: {fileID: 624044869}
   jumpHeight: 50
   maxJumps: 2
   canJump: 1
@@ -295,8 +354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb8d5c8a428c6d4cba738cea765cecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCollider: {fileID: 993830076}
-  canAutoAttack: 1
+  cooldownTimer: 0
+  baseCooldown: 10
+  canUseSpell: 1
+  coll: {fileID: 0}
   attackDamage: 20
 --- !u!114 &3719759208217599657
 MonoBehaviour:
@@ -340,12 +401,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTimer: 0
-  baseCooldown: 1
+  baseCooldown: 3
+  canUseSpell: 1
   dashState: 0
   dashDuration: 0.25
   direction: {x: 0, y: 0}
   dashForce: 150
   canDash: 0
+--- !u!114 &624044869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463165064874693383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfccb55fcf0d0f648b6b0e14e14a3bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTimer: 0
+  baseCooldown: 10
+  canUseSpell: 1
+  coll: {fileID: 0}
+  attackDamage: 10
 --- !u!1001 &311958629427084405
 PrefabInstance:
   m_ObjectHideFlags: 0

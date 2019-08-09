@@ -11,6 +11,9 @@ public class CharacterJump : MonoBehaviour
     private CharacterAutoAttack charAttack;
 
     [SerializeField]
+    private Spell qSpell = null;
+
+    [SerializeField]
     private float jumpHeight = 50f;
     private int numJumps = 0;
     [SerializeField, Tooltip("Maximum number of jumps the character can perform in a row")]
@@ -40,7 +43,8 @@ public class CharacterJump : MonoBehaviour
             else
                 charAnim.setParameterToTrueAndOthersToFalse("isJumping");
             charCrouch.canCrouch = false;
-            charAttack.canAutoAttack = false;
+            charAttack.canUseSpell = false;
+            qSpell.canUseSpell = false;
             float currentY = rb.velocity.y;
             if (currentY <= 0)
                 rb.velocity = new Vector2(0, jumpHeight);
@@ -53,7 +57,8 @@ public class CharacterJump : MonoBehaviour
         {
             charAnim.setParameterToTrueAndOthersToFalse("isFalling");
             charCrouch.canCrouch = false;
-            charAttack.canAutoAttack = false;
+            charAttack.canUseSpell = false;
+            qSpell.canUseSpell = false;
         }
     }
 
@@ -64,8 +69,8 @@ public class CharacterJump : MonoBehaviour
             numJumps = 0;
             charAnim.setParameterToTrueAndOthersToFalse("isIdle");
             charCrouch.canCrouch = true;
-            charAttack.canAutoAttack = true;
-
+            charAttack.canUseSpell = true;
+            qSpell.canUseSpell = true;
         }
 
     }
