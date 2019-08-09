@@ -8,52 +8,55 @@ public class YasuoE : Spell
     public DashState dashState;
     private float dashTimer;
     [SerializeField, Tooltip("Duration of the dash")]
-    private float dashTime = 0f;
+    private float dashDuration = 0.5f;
     [SerializeField, Tooltip("Cooldown of the dash")]
 
-
-    public Vector2 savedVelocity;
-    private float lastDirection = 0f;
+    private Vector2 direction = default;
     [SerializeField, Tooltip("Force of the dash")]
     private float dashForce = 150f;
-    private float savedGravityScale = 0f;
+    private float defaultGravity = 0f;
+
+    public bool canDash;
 
     private void Start()
     {
         charRun = GetComponent<CharacterRun>();
         charAnim = GetComponent<CharacterAnimation>();
         rb = GetComponent<Rigidbody2D>();
-        savedGravityScale = rb.gravityScale;
+        defaultGravity = rb.gravityScale;
+        canDash = true;
     }
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
-            lastDirection = Input.GetAxisRaw("Horizontal");
         switch (dashState)
         {
             case DashState.Ready:
-                bool isDashKeyDown = Input.GetKeyDown("e");
-
-                if (isDashKeyDown)
+                if (Input.GetKeyDown("e") && canDash)
                 {
+                    if (Input.GetAxisRaw("Horizontal") != 0)
+                        direction = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+                    else
+                        direction = new Vector2(transform.rotation.eulerAngles.y < 180 ? 1 : -1, 0);
+                    direction.y = Mathf.Clamp(Input.GetAxisRaw("Vertical"), 0, 1) * 0.66f;
+                    direction.Normalize();
                     charRun.canRun = false;
                     rb.gravityScale = 0;
-                    savedVelocity = rb.velocity;
-                    rb.velocity = new Vector2(lastDirection * dashForce, 0);
+                    rb.velocity = direction * dashForce;
                     dashState = DashState.Dashing;
                     charAnim.setParameterToTrueAndOthersToFalse("isDashing");
                 }
                 break;
             case DashState.Dashing:
+                rb.velocity = direction * dashForce * (1 - dashTimer / (2 * dashDuration));
                 dashTimer += Time.deltaTime;
-                if (dashTimer >= dashTime)
+                if (dashTimer >= dashDuration)
                 {
                     dashTimer = 0;
                     cooldownTimer = baseCooldown;
-                    rb.velocity = savedVelocity;
+                    rb.velocity = new Vector2(0, 0);
                     dashState = DashState.InCooldown;
                     charRun.canRun = true;
-                    rb.gravityScale = savedGravityScale;
+                    rb.gravityScale = defaultGravity;
                 }
                 break;
             case DashState.InCooldown:
