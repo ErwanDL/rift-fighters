@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class MeleeAttack : Spell
 {
-    protected CharacterAnimation charAnim;
     public BoxCollider2D coll;
 
     [SerializeField]
@@ -10,8 +9,8 @@ public abstract class MeleeAttack : Spell
 
     virtual public void OnHitEnemy(Collider2D other)
     {
-        Player hitPlayer = other.GetComponent<Player>();
-        if (hitPlayer != null)
-            hitPlayer.TakeDamage(attackDamage);
+        CharacterManager hitEnemy = other.GetComponent<CharacterManager>();
+        if (hitEnemy != null)
+            hitEnemy.TakeDamage(attackDamage);
     }
 }

@@ -863,32 +863,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3719759208217599657, guid: 8c6a55b711eed704890129a6e8630717,
+    - target: {fileID: 297866830, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+      propertyPath: associatedAttack
+      value: 
+      objectReference: {fileID: 624044872}
+    - target: {fileID: 209732557333632473, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 209732557333632473, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: deceleration
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 372691646}
-    - target: {fileID: 3703882989859205491, guid: 8c6a55b711eed704890129a6e8630717,
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
         type: 3}
-      propertyPath: coll
-      value: 
-      objectReference: {fileID: 297866832}
-    - target: {fileID: 624044869, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: coll
-      value: 
-      objectReference: {fileID: 946096944}
-    - target: {fileID: 624044869, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
-      propertyPath: baseCooldown
-      value: 2
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399845615418323013, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
---- !u!61 &297866832 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 993830076, guid: 8c6a55b711eed704890129a6e8630717,
-    type: 3}
-  m_PrefabInstance: {fileID: 297866826}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &342647808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1064,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15318
+  m_Name: pb_Mesh15412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1207,7 +1227,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15242
+  m_Name: pb_Mesh15308
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1415,6 +1435,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ef82b0f601dc94fb0df41ff74774c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &624044872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6415263279788001148, guid: 8c6a55b711eed704890129a6e8630717,
+    type: 3}
+  m_PrefabInstance: {fileID: 297866826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624044860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299e64ef917bfdc459699d832467bd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &636977555
@@ -1691,7 +1723,8 @@ MonoBehaviour:
   - m_Vertices: 070000000a00000013000000
   - m_Vertices: 090000000c00000014000000
   - m_Vertices: 0b0000000e00000012000000
-  m_SharedTextures: [{m_Vertices: 00000000010000000200000003000000}]
+  m_SharedTextures:
+  - m_Vertices: 00000000010000000200000003000000
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
@@ -1886,7 +1919,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15390
+  m_Name: pb_Mesh15494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2476,7 +2509,7 @@ PrefabInstance:
         type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 1385146484}
+      objectReference: {fileID: 0}
     - target: {fileID: 1411742016243441043, guid: f03abea05d933ed45afae80f2bce45ca,
         type: 3}
       propertyPath: m_Sprite
@@ -2564,12 +2597,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db2e1a101670bca4da797f6d01c512d8, type: 3}
---- !u!61 &946096944 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 946096944, guid: 8c6a55b711eed704890129a6e8630717,
-    type: 3}
-  m_PrefabInstance: {fileID: 297866826}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008774130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,7 +3129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15278
+  m_Name: pb_Mesh15370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3374,7 +3401,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15260
+  m_Name: pb_Mesh15328
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3821,18 +3848,35 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6677560391624200911}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1385146484 stripped
+--- !u!114 &1385146480
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-    type: 3}
-  m_PrefabInstance: {fileID: 6677560391624200911}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385146479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 349fdbf003b34c24ca5bd020adf1e9d5, type: 3}
+  m_Script: {fileID: 11500000, guid: cbc8e8c62ffa6a541817469d91cb62d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1341638203}
+        m_MethodName: ChangeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CharacterManager+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1477215480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,5 +4714,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a4539284c65b1f4ba7868c5ff1ab466, type: 3}

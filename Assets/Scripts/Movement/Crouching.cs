@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class CharacterCrouch : MonoBehaviour
+[RequireComponent(typeof(CharacterStatus))]
+public class Crouching : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private CharacterAnimation charAnim;
-    private CharacterRun charRun;
+    private CharacterAnimation anim;
+    private CharacterStatus status;
 
-    public bool canCrouch = true;
     private bool isCrouched = false;
 
     [SerializeField]
@@ -19,8 +19,8 @@ public class CharacterCrouch : MonoBehaviour
 
     void Start()
     {
-        charAnim = GetComponent<CharacterAnimation>();
-        charRun = GetComponent<CharacterRun>();
+        anim = GetComponent<CharacterAnimation>();
+        status = GetComponent<CharacterStatus>();
         standingHitboxOffset = hitbox.offset;
         standingHitboxSize = hitbox.size;
         crouchingHitboxOffset = new Vector2(-0.15f, 0.78f);
@@ -30,15 +30,15 @@ public class CharacterCrouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canCrouch && Input.GetKeyDown("down"))
+        if (status.canCrouch && Input.GetKeyDown("down"))
         {
             crouchOn();
-            charAnim.setParameterToTrueAndOthersToFalse("isCrouching");
+            anim.setParameterToTrueAndOthersToFalse("isCrouching");
         }
-        else if (isCrouched && !(Input.GetKey("down") && canCrouch))
+        else if (isCrouched && !(Input.GetKey("down") && status.canCrouch))
         {
             crouchOff();
-            charAnim.setParameterToTrueAndOthersToFalse("isIdle");
+            anim.setParameterToTrueAndOthersToFalse("isIdle");
         }
     }
     void crouchOn()
@@ -46,13 +46,13 @@ public class CharacterCrouch : MonoBehaviour
         hitbox.size = crouchingHitboxSize;
         hitbox.offset = crouchingHitboxOffset;
         isCrouched = true;
-        charRun.canRun = false;
+        status.canRun = false;
     }
     void crouchOff()
     {
         hitbox.size = standingHitboxSize;
         hitbox.offset = standingHitboxOffset;
         isCrouched = false;
-        charRun.canRun = true;
+        status.canRun = true;
     }
 }

@@ -2,41 +2,32 @@
 
 public class AutoAttackState : StateMachineBehaviour
 {
-    private CharacterRun charRun;
-    private CharacterJump charJump;
-    private CharacterCrouch charCrouch;
-
-    private YasuoE yasE;
+    private CharacterStatus status;
     private BoxCollider2D coll;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (charRun == null)
-            charRun = animator.GetComponent<CharacterRun>();
-        if (charJump == null)
-            charJump = animator.GetComponent<CharacterJump>();
-        if (charCrouch == null)
-            charCrouch = animator.GetComponent<CharacterCrouch>();
+        if (status == null)
+            status = animator.GetComponent<CharacterStatus>();
         if (coll == null)
-            coll = animator.GetComponent<CharacterAutoAttack>().coll;
-        if (yasE == null)
-            yasE = animator.GetComponent<YasuoE>();
-        canDoOtherActions(false);
+            coll = animator.GetComponent<AutoAttacking>().coll;
+        SetAbilities(false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        canDoOtherActions(true);
+        SetAbilities(true);
     }
 
-    void canDoOtherActions(bool b)
+    void SetAbilities(bool b)
     {
-        charRun.canRun = b;
-        charJump.canJump = b;
-        charCrouch.canCrouch = b;
-        yasE.canDash = b;
+        status.canRun = b;
+        status.canJump = b;
+        status.canCrouch = b;
+        status.canUseQ = b;
+        status.canUseE = b;
         coll.enabled = !b;
     }
 
