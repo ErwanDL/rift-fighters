@@ -3,7 +3,9 @@ using System.Collections;
 
 public abstract class MeleeAttack : Spell
 {
-    public BoxCollider2D associatedCollider;
+    [Header("MeleeAttack-specific parameters")]
+    [SerializeField]
+    private BoxCollider2D associatedCollider = null;
 
     [SerializeField]
     protected int attackDamage = 10;

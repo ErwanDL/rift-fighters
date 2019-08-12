@@ -2,16 +2,16 @@
 
 public class YasuoE : Spell
 {
-    private Rigidbody2D rb;
-    private float dashTimer;
+    [Header("Dash-specific parameters")]
     [SerializeField, Tooltip("Duration of the dash")]
     private float dashDuration = 0.5f;
-    [SerializeField, Tooltip("Cooldown of the dash")]
 
-    private Vector2 direction = default;
     [SerializeField, Tooltip("Force of the dash")]
     private float dashForce = 150f;
+    private Vector2 direction = default;
     private float defaultGravity = 0f;
+    private Rigidbody2D rb;
+    private float dashTimer;
 
 
     override protected void Start()

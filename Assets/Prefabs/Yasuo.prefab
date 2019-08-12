@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2441a89c70c8849a0568a31b6a076b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 50
+  jumpHeight: 55
   maxJumps: 2
 --- !u!114 &3124335340718165151
 MonoBehaviour:
@@ -363,6 +363,10 @@ MonoBehaviour:
   associatedCollider: {fileID: 946096944}
   attackDamage: 20
   delayBeforeHitScan: 0.3
+  basicQParticles: {fileID: 767949249943277801, guid: 9a639754b971820469e505b9439dbb13,
+    type: 3}
+  positionOffset: {x: 9, y: 5, z: 1.5}
+  instantiationDelay: 0.3
 --- !u!114 &9113363873973259977
 MonoBehaviour:
   m_ObjectHideFlags: 0
