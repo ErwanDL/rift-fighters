@@ -4,25 +4,23 @@ public class YasuoQ : MeleeAttack
 {
     private int consecutiveHits = 0;
 
-    override protected void Start()
-    {
-        base.Start();
-        anim = GetComponent<CharacterAnimation>();
-        status = GetComponent<CharacterStatus>();
-        coll.enabled = false;
-    }
 
-    void Update()
+    override protected void Update()
     {
-        if (Input.GetKeyDown("a") && status.canUseQ)
+        base.Update();
+        if (spellState == SpellState.Ready)
         {
-            anim.animator.SetTrigger("basicQ");
+            if (Input.GetKeyDown("a") && status.canUseQ)
+            {
+                anim.animator.SetTrigger("basicQ");
+                LaunchAttack();
+            }
         }
     }
 
-    override public void OnHitEnemy(Collider2D other)
+    override protected void OnHitEnemy(CharacterManager hitEnemy)
     {
-        base.OnHitEnemy(other);
+        base.OnHitEnemy(hitEnemy);
         consecutiveHits += 1;
     }
 

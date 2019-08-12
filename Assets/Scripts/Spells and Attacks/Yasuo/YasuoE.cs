@@ -20,8 +20,9 @@ public class YasuoE : Spell
         rb = GetComponent<Rigidbody2D>();
         defaultGravity = rb.gravityScale;
     }
-    void Update()
+    override protected void Update()
     {
+        base.Update();
         switch (spellState)
         {
             case SpellState.Ready:
@@ -45,20 +46,11 @@ public class YasuoE : Spell
                 dashTimer += Time.deltaTime;
                 if (dashTimer >= dashDuration)
                 {
+                    GoInCooldown();
                     dashTimer = 0;
-                    cooldownTimer = baseCooldown;
                     rb.velocity = new Vector2(0, 0);
-                    spellState = SpellState.InCooldown;
                     status.canRun = true;
                     rb.gravityScale = defaultGravity;
-                }
-                break;
-            case SpellState.InCooldown:
-                cooldownTimer -= Time.deltaTime;
-                if (cooldownTimer <= 0)
-                {
-                    cooldownTimer = 0;
-                    spellState = SpellState.Ready;
                 }
                 break;
         }

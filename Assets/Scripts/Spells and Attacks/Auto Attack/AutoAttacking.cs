@@ -3,17 +3,17 @@
 public class AutoAttacking : MeleeAttack
 {
 
-    override protected void Start()
+    override protected void Update()
     {
-        base.Start();
-        coll.enabled = false;
-    }
+        base.Update();
 
-    void Update()
-    {
-        if (Input.GetKeyDown("q") && status.canAutoAttack)
+        if (spellState == SpellState.Ready)
         {
-            anim.animator.SetTrigger("autoAttack");
+            if (Input.GetKeyDown("q") && status.canAutoAttack)
+            {
+                anim.animator.SetTrigger("autoAttack");
+                LaunchAttack();
+            }
         }
     }
 }

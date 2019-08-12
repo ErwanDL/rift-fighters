@@ -9,12 +9,11 @@ public enum SpellState
 [RequireComponent(typeof(CharacterStatus))]
 public abstract class Spell : MonoBehaviour
 {
+    public float baseCooldown = 3f;
+
     [HideInInspector]
     public float cooldownTimer = 0f;
-
-    public float baseCooldown = 10f;
     protected SpellState spellState;
-
     protected CharacterStatus status;
     protected CharacterAnimation anim;
 
@@ -23,6 +22,25 @@ public abstract class Spell : MonoBehaviour
         status = GetComponent<CharacterStatus>();
         anim = GetComponent<CharacterAnimation>();
         spellState = SpellState.Ready;
+    }
+
+    virtual protected void Update()
+    {
+        if (spellState == SpellState.InCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+            if (cooldownTimer <= 0)
+            {
+                cooldownTimer = 0;
+                spellState = SpellState.Ready;
+            }
+        }
+    }
+
+    protected void GoInCooldown()
+    {
+        cooldownTimer = baseCooldown;
+        spellState = SpellState.InCooldown;
     }
 }
 

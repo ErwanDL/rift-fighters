@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 946096942}
   - component: {fileID: 946096944}
-  - component: {fileID: 946096943}
   m_Layer: 8
   m_Name: BasicQCollider
   m_TagString: Untagged
@@ -45,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.8684961, y: 1.4249594}
+  m_Offset: {x: -1.8155617, y: 1.4249594}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,21 +55,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8604252, y: 0.623713}
+  m_Size: {x: 3.1151264, y: 0.623713}
   m_EdgeRadius: 0
---- !u!114 &946096943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946096941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21397e68405bf3147abc06040366e0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  associatedAttack: {fileID: 624044869}
 --- !u!1 &993830074
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +67,6 @@ GameObject:
   m_Component:
   - component: {fileID: 993830075}
   - component: {fileID: 993830076}
-  - component: {fileID: 297866830}
   m_Layer: 8
   m_Name: AutoAttackCollider
   m_TagString: Untagged
@@ -129,19 +114,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6304157, y: 0.623713}
   m_EdgeRadius: 0
---- !u!114 &297866830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993830074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21397e68405bf3147abc06040366e0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  associatedAttack: {fileID: 0}
 --- !u!1 &1830367709
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,8 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff077e83933934fb263ca4eb7b64c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  deceleration: 50
+  speed: 30
+  deceleration: 200
   moveInput: 0
 --- !u!114 &7583989199910334681
 MonoBehaviour:
@@ -369,10 +341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299e64ef917bfdc459699d832467bd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseCooldown: 1
   cooldownTimer: 0
-  baseCooldown: 10
-  coll: {fileID: 993830076}
+  associatedCollider: {fileID: 993830076}
   attackDamage: 10
+  delayBeforeHitScan: 0.2
 --- !u!114 &624044869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,10 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfccb55fcf0d0f648b6b0e14e14a3bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTimer: 0
   baseCooldown: 2
-  coll: {fileID: 946096944}
-  attackDamage: 10
+  cooldownTimer: 0
+  associatedCollider: {fileID: 946096944}
+  attackDamage: 20
+  delayBeforeHitScan: 0.3
 --- !u!114 &9113363873973259977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,8 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ef82b0f601dc94fb0df41ff74774c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTimer: 0
   baseCooldown: 3
+  cooldownTimer: 0
   dashDuration: 0.25
   direction: {x: 0, y: 0}
   dashForce: 150
@@ -421,7 +395,18 @@ MonoBehaviour:
   maxHealth: 100
   onHealthChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ChangeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: CharacterManager+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1001 &311958629427084405
