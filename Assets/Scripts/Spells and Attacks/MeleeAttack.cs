@@ -26,9 +26,8 @@ public abstract class MeleeAttack : Spell
     private IEnumerator AttackCoroutine()
     {
         Collider2D[] collidedEnemies = new Collider2D[2];
-        Debug.Log("bite1");
         yield return new WaitForSeconds(delayBeforeHitScan);
-        Debug.Log("bite2");
+
         int nb = associatedCollider.OverlapCollider(contactFilter, collidedEnemies);
         if (nb == 1)
         {
@@ -38,6 +37,7 @@ public abstract class MeleeAttack : Spell
             else
                 Debug.Log("Warning : what was hit was not a character");
         }
+
         else if (nb > 1)
         {
             Debug.Log("Warning : more than one enemy were hit");
@@ -45,6 +45,7 @@ public abstract class MeleeAttack : Spell
                 if (c != null)
                     Debug.Log(c.name);
         }
+
         GoInCooldown();
         yield return null;
     }

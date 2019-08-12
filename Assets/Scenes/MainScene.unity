@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 1411742016460857222, guid: f03abea05d933ed45afae80f2bce45ca,
         type: 3}
       propertyPath: m_Name
-      value: LeftHealthBar
+      value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 1411742016460857223, guid: f03abea05d933ed45afae80f2bce45ca,
         type: 3}
@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 8964323779907931643, guid: b71d213ccbc23d0438d68450127a5f74,
         type: 3}
       propertyPath: m_Name
-      value: LeftHealthText
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 8964323779907931644, guid: b71d213ccbc23d0438d68450127a5f74,
         type: 3}
@@ -868,6 +868,16 @@ PrefabInstance:
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 372691646}
+    - target: {fileID: 209732557333632473, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: speed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583989199910334681, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
 --- !u!1 &342647808
@@ -1834,7 +1844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720968833}
   m_Layer: 5
-  m_Name: LeftPlayerUI
+  m_Name: LeftPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2347,7 +2357,7 @@ PrefabInstance:
     - target: {fileID: 1411742016460857222, guid: f03abea05d933ed45afae80f2bce45ca,
         type: 3}
       propertyPath: m_Name
-      value: RightHealthBar
+      value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 1411742016460857223, guid: f03abea05d933ed45afae80f2bce45ca,
         type: 3}
@@ -3606,7 +3616,7 @@ PrefabInstance:
     - target: {fileID: 8964323779907931643, guid: b71d213ccbc23d0438d68450127a5f74,
         type: 3}
       propertyPath: m_Name
-      value: RightHealthText
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 8964323779907931644, guid: b71d213ccbc23d0438d68450127a5f74,
         type: 3}
@@ -3797,35 +3807,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6677560391624200911}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1385146480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385146479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc8e8c62ffa6a541817469d91cb62d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  onHealthChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1341638203}
-        m_MethodName: ChangeHealth
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: CharacterManager+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1 &1477215480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,7 +4104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857863270}
   m_Layer: 5
-  m_Name: RightPlayerUI
+  m_Name: RightPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4578,36 +4559,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy
       objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1341638203}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeHealth
-      objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6677560392991193788, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4663,11 +4614,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6677560392991193791, guid: 9a4539284c65b1f4ba7868c5ff1ab466,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6677560392991193787, guid: 9a4539284c65b1f4ba7868c5ff1ab466, type: 3}
+    - target: {fileID: 1385146480, guid: 9a4539284c65b1f4ba7868c5ff1ab466, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1341638203}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a4539284c65b1f4ba7868c5ff1ab466, type: 3}
