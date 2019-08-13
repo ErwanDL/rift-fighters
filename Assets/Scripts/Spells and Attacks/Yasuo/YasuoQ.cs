@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(YasuoTornado))]
 public class YasuoQ : MeleeAttack
 {
     [Header("Basic Q particles parameters")]
@@ -11,8 +12,16 @@ public class YasuoQ : MeleeAttack
 
     [SerializeField]
     private float instantiationDelay = 0f;
-    private int consecutiveHits = 0;
 
+    [SerializeField]
+    private int consecutiveHits = 0;
+    private YasuoTornado tornado = null;
+
+    override protected void Start()
+    {
+        base.Start();
+        tornado = GetComponent<YasuoTornado>();
+    }
 
     override protected void Update()
     {
@@ -21,9 +30,17 @@ public class YasuoQ : MeleeAttack
         {
             if (Input.GetKeyDown("a") && status.canUseQ)
             {
-                anim.animator.SetTrigger("basicQ");
-                Invoke("InstantiateBasicQParticles", instantiationDelay);
-                LaunchAttack();
+                if (consecutiveHits == 2)
+                {
+                    Vector2 facingDirection = transform.rotation.y < 180 ? Vector2.right : Vector2.left;
+                    tornado.LaunchProjectile(facingDirection);
+                }
+                else
+                {
+                    anim.animator.SetTrigger("basicQ");
+                    Invoke("InstantiateBasicQParticles", instantiationDelay);
+                    LaunchAttack();
+                }
             }
         }
     }
@@ -36,9 +53,8 @@ public class YasuoQ : MeleeAttack
 
     void InstantiateBasicQParticles()
     {
-        Vector3 startPos = transform.rotation.eulerAngles.y == 90 ? positionOffset : new Vector3(-positionOffset.x, positionOffset.y, -positionOffset.z);
-        Vector3 startRot = transform.rotation.eulerAngles.y == 90 ? new Vector3(-90, 0, 0) : new Vector3(-90, 180, 0);
-        GameObject ins = Instantiate(basicQParticles, transform.position + startPos, Quaternion.Euler(startRot));
+        GameObject ins = Instantiate(basicQParticles, Utils.GetInstantiationPosition(transform, positionOffset),
+            Utils.GetInstantiationRotation(transform, new Vector3(-90, 0, 0)));
         Destroy(ins, 1.5f);
     }
 

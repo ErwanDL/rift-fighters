@@ -25,15 +25,15 @@ public abstract class MeleeAttack : Spell
             if (hitEnemy != null)
                 OnHitEnemy(hitEnemy);
             else
-                Debug.Log("Warning : what was hit was not a character");
+                Debug.LogWarning("Warning : what was hit was not a character");
         }
 
         else if (nb > 1)
         {
-            Debug.Log("Warning : more than one enemy were hit");
+            Debug.LogWarning("Warning : more than one enemy were hit");
             foreach (Collider2D c in collidedEnemies)
                 if (c != null)
-                    Debug.Log(c.name);
+                    Debug.LogWarning(c.name);
         }
 
         GoInCooldown();

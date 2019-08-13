@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 3124335340718165151}
   - component: {fileID: 6415263279788001148}
   - component: {fileID: 624044869}
+  - component: {fileID: 4640712047863322838}
   - component: {fileID: 9113363873973259977}
   - component: {fileID: 5399845615418323013}
   m_Layer: 8
@@ -365,8 +366,30 @@ MonoBehaviour:
   delayBeforeHitScan: 0.3
   basicQParticles: {fileID: 767949249943277801, guid: 9a639754b971820469e505b9439dbb13,
     type: 3}
-  positionOffset: {x: 9, y: 5, z: 1.5}
+  positionOffset: {x: 8, y: 5, z: 1.5}
   instantiationDelay: 0.3
+--- !u!114 &4640712047863322838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463165064874693383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1960bc11de158b64d8d444a3fef1787a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseCooldown: 3
+  cooldownTimer: 0
+  range: 10
+  projectileSpeed: 10
+  attackDamage: 10
+  canPassThroughEnemies: 0
+  projectilePrefab: {fileID: 1425153249460748776, guid: 39cbc2f1699a7a843a48f6c86058759f,
+    type: 3}
+  positionOffset: {x: 5, y: 4, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &9113363873973259977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +405,6 @@ MonoBehaviour:
   baseCooldown: 3
   cooldownTimer: 0
   dashDuration: 0.25
-  direction: {x: 0, y: 0}
   dashForce: 150
 --- !u!114 &5399845615418323013
 MonoBehaviour:
