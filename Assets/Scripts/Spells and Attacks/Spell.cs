@@ -6,7 +6,7 @@ public enum SpellState
     InCast,
     InCooldown
 }
-[RequireComponent(typeof(CharacterStatus))]
+[RequireComponent(typeof(CharacterStatus)), RequireComponent(typeof(CharacterAnimation))]
 public abstract class Spell : MonoBehaviour
 {
     public float baseCooldown = 3f;
@@ -16,12 +16,19 @@ public abstract class Spell : MonoBehaviour
     protected SpellState spellState;
     protected CharacterStatus status;
     protected CharacterAnimation anim;
+    protected ContactFilter2D contactFilter;
+    protected string enemyLayer;
 
     virtual protected void Start()
     {
         status = GetComponent<CharacterStatus>();
         anim = GetComponent<CharacterAnimation>();
         spellState = SpellState.Ready;
+        contactFilter = new ContactFilter2D();
+        string parentLayer = LayerMask.LayerToName(gameObject.layer);
+        enemyLayer = parentLayer == "Red side" ? "Blue Side" : "Red Side";
+        contactFilter.SetLayerMask(LayerMask.GetMask(enemyLayer));
+        contactFilter.useTriggers = true;
     }
 
     virtual protected void Update()

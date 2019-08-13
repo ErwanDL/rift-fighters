@@ -12,18 +12,6 @@ public abstract class MeleeAttack : Spell
 
     [SerializeField]
     private float delayBeforeHitScan = 0f;
-    private string enemyLayer;
-    private ContactFilter2D contactFilter;
-
-    override protected void Start()
-    {
-        base.Start();
-        contactFilter = new ContactFilter2D();
-        string parentLayer = LayerMask.LayerToName(gameObject.layer);
-        enemyLayer = parentLayer == "Red side" ? "Blue Side" : "Red Side";
-        contactFilter.SetLayerMask(LayerMask.GetMask(enemyLayer));
-        contactFilter.useTriggers = true;
-    }
 
     private IEnumerator AttackCoroutine()
     {
