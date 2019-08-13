@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ProjectileSpell : Spell
+abstract public class ProjectileSpell : Spell
 {
-    [Header("ProjectileSpell-specific parameters")]
+    [Header("ProjectileSpell parameters")]
     [SerializeField]
     protected float range = 10f;
 
@@ -10,12 +10,9 @@ public class ProjectileSpell : Spell
     protected float projectileSpeed = 10f;
 
     [SerializeField]
-    protected int attackDamage = 10;
-
-    [SerializeField]
     protected bool stopsOnHit = false;
 
-    [Header("Projectile specifications")]
+    [Header("Projectile instantiation")]
     [SerializeField]
     protected GameObject projectilePrefab = null;
 
@@ -24,21 +21,21 @@ public class ProjectileSpell : Spell
 
     [SerializeField]
     protected Vector3 rotationOffset = default;
-
     protected Projectile instantiatedProjectile = null;
 
-    public void LaunchProjectile(Vector2 normalizedDirection)
+    override protected void OnIncantationEnd()
     {
+        Vector2 direction = transform.rotation.eulerAngles.y < 180 ? Vector2.right : Vector2.left;
         instantiatedProjectile = Instantiate(projectilePrefab, Utils.GetInstantiationPosition(transform, positionOffset),
             Utils.GetInstantiationRotation(transform, rotationOffset)).GetComponent<Projectile>();
-        instantiatedProjectile.GetComponent<Rigidbody2D>().velocity = normalizedDirection * projectileSpeed;
+        instantiatedProjectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
         instantiatedProjectile.caster = this;
         instantiatedProjectile.enemyLayer = enemyLayer;
-        Destroy(instantiatedProjectile.gameObject, range / projectileSpeed);
+        Invoke("OnReachMaxRange", range / projectileSpeed);
     }
 
-    virtual public void OnProjectileHitEnemy(CharacterManager hitEnemy)
+    virtual protected void OnReachMaxRange()
     {
-        Debug.Log("Enemy hit");
+        Destroy(instantiatedProjectile.gameObject);
     }
 }

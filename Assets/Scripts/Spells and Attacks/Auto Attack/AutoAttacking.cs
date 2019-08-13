@@ -12,7 +12,7 @@ public class AutoAttacking : MeleeAttack
             if (Input.GetKeyDown("q") && status.canAutoAttack)
             {
                 anim.animator.SetTrigger("autoAttack");
-                LaunchAttack();
+                CastSpell();
             }
         }
     }

@@ -1,23 +1,14 @@
 using UnityEngine;
-using System.Collections;
 
 public abstract class MeleeAttack : Spell
 {
-    [Header("MeleeAttack-specific parameters")]
+    [Header("MeleeAttack parameters")]
     [SerializeField]
     private BoxCollider2D associatedCollider = null;
 
-    [SerializeField]
-    protected int attackDamage = 10;
-
-    [SerializeField]
-    private float delayBeforeHitScan = 0f;
-
-    private IEnumerator AttackCoroutine()
+    override protected void OnIncantationEnd()
     {
         Collider2D[] collidedEnemies = new Collider2D[2];
-        yield return new WaitForSeconds(delayBeforeHitScan);
-
         int nb = associatedCollider.OverlapCollider(contactFilter, collidedEnemies);
         if (nb == 1)
         {
@@ -37,16 +28,5 @@ public abstract class MeleeAttack : Spell
         }
 
         GoInCooldown();
-        yield return null;
-    }
-
-    protected void LaunchAttack()
-    {
-        StartCoroutine("AttackCoroutine");
-    }
-
-    protected virtual void OnHitEnemy(CharacterManager hitEnemy)
-    {
-        hitEnemy.TakeDamage(attackDamage);
     }
 }

@@ -343,10 +343,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCooldown: 1
+  attackDamage: 10
+  incantationDelay: 0.2
   cooldownTimer: 0
   associatedCollider: {fileID: 993830076}
-  attackDamage: 10
-  delayBeforeHitScan: 0.2
 --- !u!114 &624044869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,15 +359,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfccb55fcf0d0f648b6b0e14e14a3bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCooldown: 2
+  baseCooldown: 1
+  attackDamage: 20
+  incantationDelay: 0.3
   cooldownTimer: 0
   associatedCollider: {fileID: 946096944}
-  attackDamage: 20
-  delayBeforeHitScan: 0.3
   basicQParticles: {fileID: 767949249943277801, guid: 9a639754b971820469e505b9439dbb13,
     type: 3}
   positionOffset: {x: 8, y: 5, z: 1.5}
-  instantiationDelay: 0.3
+  consecutiveHits: 0
 --- !u!114 &4640712047863322838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,15 +380,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1960bc11de158b64d8d444a3fef1787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCooldown: 3
+  baseCooldown: 0
+  attackDamage: 20
+  incantationDelay: 0.25
   cooldownTimer: 0
-  range: 10
-  projectileSpeed: 10
-  attackDamage: 10
-  canPassThroughEnemies: 0
+  range: 40
+  projectileSpeed: 30
+  stopsOnHit: 0
   projectilePrefab: {fileID: 1425153249460748776, guid: 39cbc2f1699a7a843a48f6c86058759f,
     type: 3}
-  positionOffset: {x: 5, y: 4, z: 0}
+  positionOffset: {x: 5, y: 0.3, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &9113363873973259977
 MonoBehaviour:
@@ -403,6 +404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCooldown: 3
+  attackDamage: 10
+  incantationDelay: 0
   cooldownTimer: 0
   dashDuration: 0.25
   dashForce: 150

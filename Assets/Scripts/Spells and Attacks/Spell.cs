@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public enum SpellState
 {
@@ -10,6 +11,12 @@ public enum SpellState
 public abstract class Spell : MonoBehaviour
 {
     public float baseCooldown = 3f;
+
+    [SerializeField]
+    protected int attackDamage = 10;
+
+    [SerializeField]
+    protected float incantationDelay = 0f;
 
     [HideInInspector]
     public float cooldownTimer = 0f;
@@ -44,10 +51,24 @@ public abstract class Spell : MonoBehaviour
         }
     }
 
+    virtual protected void OnIncantationEnd()
+    {
+    }
+
+    public void CastSpell()
+    {
+        Invoke("OnIncantationEnd", incantationDelay);
+    }
+
     protected void GoInCooldown()
     {
         cooldownTimer = baseCooldown;
         spellState = SpellState.InCooldown;
+    }
+
+    virtual public void OnHitEnemy(CharacterManager hitEnemy)
+    {
+        hitEnemy.TakeDamage(attackDamage);
     }
 }
 
