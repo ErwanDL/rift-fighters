@@ -2,16 +2,31 @@ using UnityEngine;
 
 public abstract class MeleeAttack : Spell
 {
-    protected CharacterAnimation charAnim;
-    public BoxCollider2D coll;
-
+    [Header("MeleeAttack parameters")]
     [SerializeField]
-    protected int attackDamage = 10;
+    private BoxCollider2D associatedCollider = null;
 
-    virtual public void OnHitEnemy(Collider2D other)
+    override protected void OnIncantationEnd()
     {
-        Player hitPlayer = other.GetComponent<Player>();
-        if (hitPlayer != null)
-            hitPlayer.TakeDamage(attackDamage);
+        Collider2D[] collidedEnemies = new Collider2D[2];
+        int nb = associatedCollider.OverlapCollider(contactFilter, collidedEnemies);
+        if (nb == 1)
+        {
+            CharacterManager hitEnemy = collidedEnemies[0].GetComponentInParent<CharacterManager>();
+            if (hitEnemy != null)
+                OnHitEnemy(hitEnemy);
+            else
+                Debug.LogWarning("Warning : what was hit was not a character");
+        }
+
+        else if (nb > 1)
+        {
+            Debug.LogWarning("Warning : more than one enemy were hit");
+            foreach (Collider2D c in collidedEnemies)
+                if (c != null)
+                    Debug.LogWarning(c.name);
+        }
+
+        GoInCooldown();
     }
 }

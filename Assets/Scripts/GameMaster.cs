@@ -16,7 +16,7 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public static void KillPlayer(Player player)
+    public static void KillPlayer(CharacterManager player)
     {
         Destroy(player.gameObject);
     }
