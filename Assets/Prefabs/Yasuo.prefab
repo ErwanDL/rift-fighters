@@ -360,14 +360,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCooldown: 1
-  attackDamage: 20
+  attackDamage: 10
   incantationDelay: 0.3
   cooldownTimer: 0
   associatedCollider: {fileID: 946096944}
   basicQParticles: {fileID: 767949249943277801, guid: 9a639754b971820469e505b9439dbb13,
     type: 3}
   positionOffset: {x: 8, y: 5, z: 1.5}
-  consecutiveHits: 0
+  consecutiveHits: 2
 --- !u!114 &4640712047863322838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCooldown: 0
-  attackDamage: 20
+  attackDamage: 10
   incantationDelay: 0.25
   cooldownTimer: 0
   range: 40
@@ -391,6 +391,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 5, y: 0.3, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
+  knockupDuration: 0.7
 --- !u!114 &9113363873973259977
 MonoBehaviour:
   m_ObjectHideFlags: 0

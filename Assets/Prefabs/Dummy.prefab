@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 6677560392991193789}
   - component: {fileID: 6677560392991193790}
   - component: {fileID: 6677560392991193791}
+  - component: {fileID: 1385146485}
   - component: {fileID: 1385146480}
+  - component: {fileID: 1605996529727749298}
   m_Layer: 9
   m_Name: Dummy
   m_TagString: Character
@@ -90,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -106,6 +108,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1385146485
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677560392991193760}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 15
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &1385146480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +158,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: CharacterManager+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1605996529727749298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677560392991193760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209cd625907b6b747a755f9ef43a9b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRun: 0
+  canJump: 0
+  canCrouch: 0
+  canAutoAttack: 0
+  canUseQ: 0
+  canUseE: 0

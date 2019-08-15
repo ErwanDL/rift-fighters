@@ -35,10 +35,7 @@ public class Jumping : MonoBehaviour
                 anim.setParameterToTrueAndOthersToFalse("isJumping");
             SetAbilities(false);
             float currentY = rb.velocity.y;
-            if (currentY <= 0)
-                rb.velocity = new Vector2(0, jumpHeight);
-            else
-                rb.velocity = new Vector2(0, currentY + jumpHeight);
+            rb.velocity = new Vector2(0, jumpHeight);
             ++numJumps;
 
         }
