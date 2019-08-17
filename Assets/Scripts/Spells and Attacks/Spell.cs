@@ -20,7 +20,8 @@ public abstract class Spell : MonoBehaviour
 
     [HideInInspector]
     public float cooldownTimer = 0f;
-    protected SpellState spellState;
+    [HideInInspector]
+    public SpellState spellState;
     protected CharacterStatus status;
     protected CharacterAnimation anim;
     protected ContactFilter2D contactFilter;

@@ -12,12 +12,16 @@ public class YasuoE : Spell
     private float defaultGravity = 0f;
     private Rigidbody2D rb;
     private float dashTimer;
+    [HideInInspector]
+    public bool beyblade = false;
+    private YasuoQ qSpell = null;
 
 
     override protected void Start()
     {
         base.Start();
         rb = GetComponent<Rigidbody2D>();
+        qSpell = GetComponent<YasuoQ>();
         defaultGravity = rb.gravityScale;
     }
     override protected void Update()
@@ -51,6 +55,15 @@ public class YasuoE : Spell
                     rb.velocity = new Vector2(0, 0);
                     status.canRun = true;
                     rb.gravityScale = defaultGravity;
+                    if (beyblade)
+                    {
+                        Debug.Log("chain with Beyblade");
+                        anim.animator.SetBool("isDashing", false);
+                        anim.animator.SetTrigger("beyblade");
+                        qSpell.CastBeyblade();
+                    }
+                    else
+                        anim.setParameterToTrueAndOthersToFalse("isIdle");
                 }
                 break;
         }

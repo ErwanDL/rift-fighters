@@ -1031,6 +1031,15 @@ PrefabInstance:
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 372691646}
+    - target: {fileID: 624044869, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
+      propertyPath: consecutiveHits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640712047863322838, guid: 8c6a55b711eed704890129a6e8630717,
+        type: 3}
+      propertyPath: incantationDelay
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6a55b711eed704890129a6e8630717, type: 3}
 --- !u!1 &342647808

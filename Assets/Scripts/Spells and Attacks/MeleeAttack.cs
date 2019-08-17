@@ -4,7 +4,7 @@ public abstract class MeleeAttack : Spell
 {
     [Header("MeleeAttack parameters")]
     [SerializeField]
-    private BoxCollider2D associatedCollider = null;
+    protected Collider2D associatedCollider = null;
 
     override protected void OnIncantationEnd()
     {
